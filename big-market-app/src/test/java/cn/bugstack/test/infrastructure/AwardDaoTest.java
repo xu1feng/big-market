@@ -28,6 +28,7 @@ public class AwardDaoTest {
     @Test
     public void test_queryAwardList() {
         List<Award> awards = awardDao.queryAwardList();
+        // 将对象序列化成 JSON 字符串, 这样在日志中就可以清晰地看到对象内部的结构和数据。
         log.info("测试结果: {}", JSON.toJSONString(awards));
     }
 
