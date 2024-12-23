@@ -17,4 +17,6 @@ public interface IStrategyAwardDao {
     // 查询奖品明细配置列表
     List<StrategyAward> queryStrategyAwardList();
 
+    List<StrategyAward> queryStrategyAwardListByStrategyId(Long strategyId);
+
 }
