@@ -3,6 +3,7 @@ package cn.bugstack.domain.strategy.repository;
 import cn.bugstack.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.strategy.model.entity.StrategyEntity;
 import cn.bugstack.domain.strategy.model.entity.StrategyRuleEntity;
+import cn.bugstack.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public interface IStrategyRepository {
     /**
      * 根据比率键获取策略奖励组装信息
      *
-     * @param strategyId 策略ID，用于标识特定的策略
+     * @param key 策略ID，用于标识特定的策略
      * @param rateKey 比率键，用于获取特定的奖励组装信息
      * @return 返回一个整数，表示根据比率键获取的策略奖励组装信息
      */
@@ -58,4 +59,5 @@ public interface IStrategyRepository {
 
     String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel);
 
+    StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
 }
