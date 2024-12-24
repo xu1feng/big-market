@@ -1,6 +1,8 @@
 package cn.bugstack.domain.strategy.repository;
 
 import cn.bugstack.domain.strategy.model.entity.StrategyAwardEntity;
+import cn.bugstack.domain.strategy.model.entity.StrategyEntity;
+import cn.bugstack.domain.strategy.model.entity.StrategyRuleEntity;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -25,11 +27,11 @@ public interface IStrategyRepository {
     /**
      * 存储策略奖励搜索比率表
      *
-     * @param strategyId 策略ID，用于标识特定的策略
+     * @param key 策略ID，用于标识特定的策略
      * @param rateRange 比率范围，用于定义搜索的范围
      * @param shuffleStrategyAwardSearchRateTables 一个HashMap，键为比率键，值为搜索比率，用于存储搜索比率表
      */
-    void storeStrategyAwardSearchRateTables(Long strategyId, Integer rateRange, HashMap<Integer, Integer> shuffleStrategyAwardSearchRateTables);
+    void storeStrategyAwardSearchRateTables(String key, Integer rateRange, HashMap<Integer, Integer> shuffleStrategyAwardSearchRateTables);
 
     /**
      * 获取指定策略的比率范围
@@ -39,6 +41,8 @@ public interface IStrategyRepository {
      */
     int getRateRange(Long strategyId);
 
+    int getRateRange(String key);
+
     /**
      * 根据比率键获取策略奖励组装信息
      *
@@ -46,6 +50,10 @@ public interface IStrategyRepository {
      * @param rateKey 比率键，用于获取特定的奖励组装信息
      * @return 返回一个整数，表示根据比率键获取的策略奖励组装信息
      */
-    Integer getStrategyAwardAssemble(Long strategyId, int rateKey);
+    Integer getStrategyAwardAssemble(String key, int rateKey);
+
+    StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
+
+    StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleModel);
 
 }

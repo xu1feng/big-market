@@ -17,4 +17,5 @@ public interface IStrategyDao {
     // 查询抽奖策略列表
     List<Strategy> queryStrategyList();
 
+    Strategy queryStrategyByStrategyId(Long strategyId);
 }

@@ -17,4 +17,6 @@ public interface IStrategyRuleDao {
     // 查询策略规则列表
     List<StrategyRule> queryStrategyRuleList();
 
+    StrategyRule queryStrategyRule(StrategyRule strategyRuleReq);
+
 }
