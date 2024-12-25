@@ -4,8 +4,8 @@ import cn.bugstack.domain.strategy.model.entity.RaffleAwardEntity;
 import cn.bugstack.domain.strategy.model.entity.RaffleFactorEntity;
 import cn.bugstack.domain.strategy.service.IRaffleStrategy;
 import cn.bugstack.domain.strategy.service.armory.IStrategyArmory;
-import cn.bugstack.domain.strategy.service.rule.impl.RuleLockLogicFilter;
-import cn.bugstack.domain.strategy.service.rule.impl.RuleWeightLogicFilter;
+import cn.bugstack.domain.strategy.service.rule.chain.impl.RuleWeightLogicChain;
+import cn.bugstack.domain.strategy.service.rule.filter.impl.RuleLockLogicFilter;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 /**
  * @author: Xuyifeng
  * @date: 2024/12/23 20:28
- * @description: 抽奖策略测试
+ * @description: 抽奖责任链测试，验证不同的规则走不同的责任链
  */
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -34,7 +34,7 @@ public class RaffleStrategyTest {
     private IRaffleStrategy raffleStrategy;
 
     @Resource
-    private RuleWeightLogicFilter ruleWeightLogicFilter;
+    private RuleWeightLogicChain ruleWeightLogicChain;
 
     @Resource
     private RuleLockLogicFilter ruleLockLogicFilter;
@@ -47,7 +47,7 @@ public class RaffleStrategyTest {
         strategyArmory.assembleLotteryStrategy(100003L);
 
         // 通过反射 mock 规则中的值
-        ReflectionTestUtils.setField(ruleWeightLogicFilter, "userScore", 40500L);
+        ReflectionTestUtils.setField(ruleWeightLogicChain, "userScore", 40500L);
         ReflectionTestUtils.setField(ruleLockLogicFilter, "userRaffleCount", 10L);
     }
 
