@@ -5,7 +5,6 @@ import cn.bugstack.domain.strategy.model.entity.RaffleFactorEntity;
 import cn.bugstack.domain.strategy.service.IRaffleStrategy;
 import cn.bugstack.domain.strategy.service.armory.IStrategyArmory;
 import cn.bugstack.domain.strategy.service.rule.chain.impl.RuleWeightLogicChain;
-import cn.bugstack.domain.strategy.service.rule.filter.impl.RuleLockLogicFilter;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -36,26 +35,23 @@ public class RaffleStrategyTest {
     @Resource
     private RuleWeightLogicChain ruleWeightLogicChain;
 
-    @Resource
-    private RuleLockLogicFilter ruleLockLogicFilter;
-
     @Before
     public void setUp() {
         // 策略装配 100001、100002、100003
         strategyArmory.assembleLotteryStrategy(100001L);
-        strategyArmory.assembleLotteryStrategy(100002L);
-        strategyArmory.assembleLotteryStrategy(100003L);
+//        strategyArmory.assembleLotteryStrategy(100002L);
+//        strategyArmory.assembleLotteryStrategy(100003L);
+        strategyArmory.assembleLotteryStrategy(100006L);
 
         // 通过反射 mock 规则中的值
         ReflectionTestUtils.setField(ruleWeightLogicChain, "userScore", 40500L);
-        ReflectionTestUtils.setField(ruleLockLogicFilter, "userRaffleCount", 10L);
     }
 
     @Test
     public void test_performRaffle() {
         RaffleFactorEntity raffleFactorEntity = RaffleFactorEntity.builder()
                 .userId("xuyifeng")
-                .strategyId(100001L)
+                .strategyId(100006L)
                 .build();
 
         RaffleAwardEntity raffleAwardEntity = raffleStrategy.performRaffle(raffleFactorEntity);
