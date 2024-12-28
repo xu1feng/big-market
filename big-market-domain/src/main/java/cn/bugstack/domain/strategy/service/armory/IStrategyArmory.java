@@ -9,11 +9,11 @@ package cn.bugstack.domain.strategy.service.armory;
 public interface IStrategyArmory {
 
     /**
-     * 组装策略
-     * 根据策略ID，将相关的策略组件或配置进行组装
+     * 装配抽奖策略配置「触发的时机可以为活动审核通过后进行调用」
      *
-     * @param strategyId 策略ID，用于标识特定的策略
+     * @param strategyId 策略ID
+     * @return 装配结果
      */
-    void assembleLotteryStrategy(Long strategyId);
+    boolean assembleLotteryStrategy(Long strategyId);
 
 }

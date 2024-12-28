@@ -7,9 +7,8 @@ import cn.bugstack.domain.strategy.model.valobj.RuleTreeVO;
 import cn.bugstack.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import cn.bugstack.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: Xuyifeng
@@ -19,41 +18,15 @@ import java.util.List;
 
 public interface IStrategyRepository {
 
-    /**
-     * 查询指定策略的奖励列表
-     *
-     * @param strategyId 策略ID，用于标识特定的策略
-     * @return 返回一个StrategyAwardEntity对象列表，包含指定策略的奖励信息
-     */
     List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId);
 
-    /**
-     * 存储策略奖励搜索比率表
-     *
-     * @param key 策略ID，用于标识特定的策略
-     * @param rateRange 比率范围，用于定义搜索的范围
-     * @param shuffleStrategyAwardSearchRateTables 一个HashMap，键为比率键，值为搜索比率，用于存储搜索比率表
-     */
-    void storeStrategyAwardSearchRateTables(String key, Integer rateRange, HashMap<Integer, Integer> shuffleStrategyAwardSearchRateTables);
+    void storeStrategyAwardSearchRateTable(String key, Integer rateRange, Map<Integer, Integer> strategyAwardSearchRateTable);
 
-    /**
-     * 获取指定策略的比率范围
-     *
-     * @param strategyId 策略ID，用于标识特定的策略
-     * @return 返回一个整数，表示指定策略的比率范围
-     */
+    Integer getStrategyAwardAssemble(String key, Integer rateKey);
+
     int getRateRange(Long strategyId);
 
     int getRateRange(String key);
-
-    /**
-     * 根据比率键获取策略奖励组装信息
-     *
-     * @param key 策略ID，用于标识特定的策略
-     * @param rateKey 比率键，用于获取特定的奖励组装信息
-     * @return 返回一个整数，表示根据比率键获取的策略奖励组装信息
-     */
-    Integer getStrategyAwardAssemble(String key, int rateKey);
 
     StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
 
@@ -89,10 +62,33 @@ public interface IStrategyRepository {
      */
     Boolean subtractionAwardStock(String cacheKey);
 
+    /**
+     * 写入奖品库存消费队列
+     *
+     * @param strategyAwardStockKeyVO 对象值对象
+     */
     void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO);
 
-    StrategyAwardStockKeyVO takeQueueValue();
+    /**
+     * 获取奖品库存消费队列
+     */
+    StrategyAwardStockKeyVO takeQueueValue() throws InterruptedException;
 
+    /**
+     * 更新奖品库存消耗
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     */
     void updateStrategyAwardStock(Long strategyId, Integer awardId);
+
+    /**
+     * 根据策略ID+奖品ID的唯一值组合，查询奖品信息
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @return 奖品信息
+     */
+    StrategyAwardEntity queryStrategyAwardEntity(Long strategyId, Integer awardId);
 
 }

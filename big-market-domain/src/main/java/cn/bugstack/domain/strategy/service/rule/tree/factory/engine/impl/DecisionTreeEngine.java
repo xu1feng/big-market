@@ -37,6 +37,7 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
         String nextNode = ruleTreeVO.getTreeRootRuleNode();
         Map<String, RuleTreeNodeVO> treeNodeMap = ruleTreeVO.getTreeNodeMap();
 
+        // 获取起始节点「根节点记录了第一个要执行的规则」
         RuleTreeNodeVO ruleTreeNode = treeNodeMap.get(nextNode);
         while (null != nextNode) {
             // 获取决策节点
@@ -58,15 +59,14 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
         return strategyAwardData;
     }
 
-    private String nextNode(String matterValue, List<RuleTreeNodeLineVO> ruleTreeNodeLineVOList) {
-        if (null == ruleTreeNodeLineVOList || ruleTreeNodeLineVOList.isEmpty())
-            return null;
-        for (RuleTreeNodeLineVO nodeLine : ruleTreeNodeLineVOList) {
+    public String nextNode(String matterValue, List<RuleTreeNodeLineVO> treeNodeLineVOList) {
+        if (null == treeNodeLineVOList || treeNodeLineVOList.isEmpty()) return null;
+        for (RuleTreeNodeLineVO nodeLine : treeNodeLineVOList) {
             if (decisionLogic(matterValue, nodeLine)) {
                 return nodeLine.getRuleNodeTo();
             }
         }
-        throw new RuntimeException("决策树引擎，nextNode 计算失败，未找到可执行节点！");
+        return null;
     }
 
     public boolean decisionLogic(String matterValue, RuleTreeNodeLineVO nodeLine) {
@@ -82,4 +82,5 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
                 return false;
         }
     }
+
 }

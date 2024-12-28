@@ -9,15 +9,28 @@ package cn.bugstack.domain.strategy.service.armory;
 public interface IStrategyDispatch {
 
     /**
-     * 获取随机奖项ID
-     * 根据策略ID，按照既定的规则或算法，从奖项池中选取一个随机奖项
+     * 获取抽奖策略装配的随机结果
      *
-     * @param strategyId 策略ID，用于标识特定的策略
-     * @return 返回随机选取的奖项ID
+     * @param strategyId 策略ID
+     * @return 抽奖结果
      */
     Integer getRandomAwardId(Long strategyId);
 
+    /**
+     * 获取抽奖策略装配的随机结果
+     *
+     * @param strategyId 权重ID
+     * @return 抽奖结果
+     */
     Integer getRandomAwardId(Long strategyId, String ruleWeightValue);
+
+    /**
+     * 获取抽奖策略装配的随机结果
+     *
+     * @param key = strategyId + _ + ruleWeightValue；
+     * @return 抽奖结果
+     */
+    Integer getRandomAwardId(String key);
 
     /**
      * 根据策略ID和奖品ID，扣减奖品缓存库存
