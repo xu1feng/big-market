@@ -1,6 +1,6 @@
-package cn.bugstack.domain.activity.service.rule.factory;
+package cn.bugstack.domain.activity.service.quota.rule.factory;
 
-import cn.bugstack.domain.activity.service.rule.IActionChain;
+import cn.bugstack.domain.activity.service.quota.rule.IActionChain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
@@ -35,7 +35,7 @@ public class DefaultActivityChainFactory {
     @AllArgsConstructor
     public enum ActionModel {
 
-        activity_base_action("activity_base_action", "活动的时间、状态校验"),
+        activity_base_action("activity_base_action", "活动的库存、时间校验"),
         activity_sku_stock_action("activity_sku_stock_action", "活动sku库存"),
         ;
 
