@@ -1,5 +1,7 @@
 package cn.bugstack.domain.strategy.service.armory;
 
+import java.util.Date;
+
 /**
  * @author: Xuyifeng
  * @date: 2024/12/23 21:28
@@ -39,6 +41,6 @@ public interface IStrategyDispatch {
      * @param awardId    奖品ID
      * @return 扣减结果
      */
-    Boolean subtractionAwardStock(Long strategyId, Integer awardId);
+    Boolean subtractionAwardStock(Long strategyId, Integer awardId, Date endDateTime);
 
 }
