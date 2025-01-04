@@ -330,12 +330,12 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public Map<String, Integer> queryAwardRuleLockCount(String[] treeIds) {
-        if (null == treeIds || 0 == treeIds.length) return new HashMap<>();
+        if (null == treeIds || treeIds.length == 0) return new HashMap<>();
         List<RuleTreeNode> ruleTreeNodes = ruleTreeNodeDao.queryRuleLocks(treeIds);
         Map<String, Integer> resultMap = new HashMap<>();
-        for (RuleTreeNode ruleTreeNode : ruleTreeNodes) {
-            String treeId = ruleTreeNode.getTreeId();
-            Integer ruleValue = Integer.valueOf(ruleTreeNode.getRuleValue());
+        for (RuleTreeNode node : ruleTreeNodes) {
+            String treeId = node.getTreeId();
+            Integer ruleValue = Integer.valueOf(node.getRuleValue());
             resultMap.put(treeId, ruleValue);
         }
         return resultMap;
