@@ -7,7 +7,7 @@
 #
 # 主机: 127.0.0.1 (MySQL 5.6.39)
 # 数据库: big_market_01
-# 生成时间: 2024-04-27 07:10:50 +0000
+# 生成时间: 2024-04-30 10:18:45 +0000
 # ************************************************************
 
 
@@ -48,7 +48,7 @@ LOCK TABLES `raffle_activity_account` WRITE;
 
 INSERT INTO `raffle_activity_account` (`id`, `user_id`, `activity_id`, `total_count`, `total_count_surplus`, `day_count`, `day_count_surplus`, `month_count`, `month_count_surplus`, `create_time`, `update_time`)
 VALUES
-	(3,'xiaofuge',100301,63,60,63,60,63,60,'2024-03-23 16:38:57','2024-04-27 15:00:22');
+	(3,'xiaofuge',100301,10000,10000,10000,10000,10000,10000,'2024-03-23 16:38:57','2024-04-27 15:49:56');
 
 /*!40000 ALTER TABLE `raffle_activity_account` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -80,8 +80,7 @@ VALUES
 	(2,'xiaofuge',100301,'2024-04-05',45,44,'2024-04-05 17:10:31','2024-04-05 17:10:31'),
 	(3,'xiaofuge',100301,'2024-04-08',45,44,'2024-04-08 22:52:47','2024-04-08 22:52:47'),
 	(4,'xiaofuge',100301,'2024-04-13',45,23,'2024-04-13 11:44:10','2024-04-20 10:51:09'),
-	(7,'xiaofuge',100301,'2024-04-20',45,13,'2024-04-20 16:50:38','2024-04-20 16:50:38'),
-	(9,'xiaofuge',100301,'2024-04-27',63,62,'2024-04-27 13:26:49','2024-04-27 15:07:28');
+	(7,'xiaofuge',100301,'2024-04-20',45,13,'2024-04-20 16:50:38','2024-04-20 16:50:38');
 
 /*!40000 ALTER TABLE `raffle_activity_account_day` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -105,15 +104,6 @@ CREATE TABLE `raffle_activity_account_month` (
   UNIQUE KEY `uq_user_id_activity_id_month` (`user_id`,`activity_id`,`month`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='抽奖活动账户表-月次数';
 
-LOCK TABLES `raffle_activity_account_month` WRITE;
-/*!40000 ALTER TABLE `raffle_activity_account_month` DISABLE KEYS */;
-
-INSERT INTO `raffle_activity_account_month` (`id`, `user_id`, `activity_id`, `month`, `month_count`, `month_count_surplus`, `create_time`, `update_time`)
-VALUES
-	(5,'xiaofuge',100301,'2024-04',45,42,'2024-04-05 17:10:31','2024-04-27 15:00:22');
-
-/*!40000 ALTER TABLE `raffle_activity_account_month` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # 转储表 raffle_activity_order_000
@@ -177,64 +167,6 @@ LOCK TABLES `raffle_activity_order_001` WRITE;
 
 INSERT INTO `raffle_activity_order_001` (`id`, `user_id`, `sku`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `total_count`, `day_count`, `month_count`, `state`, `out_business_no`, `create_time`, `update_time`)
 VALUES
-	(10,'xiaofuge',9011,100301,'测试活动',100006,'973296627434','2024-03-23 08:38:58',1,1,1,'completed','700091009111','2024-03-23 16:38:57','2024-03-23 16:38:57'),
-	(11,'xiaofuge',9011,100301,'测试活动',100006,'659722993182','2024-03-23 09:38:54',1,1,1,'completed','700091009112','2024-03-23 17:38:54','2024-03-23 17:38:54'),
-	(13,'xiaofuge',9011,100301,'测试活动',100006,'773767968094','2024-03-23 09:40:11',1,1,1,'completed','700091009113','2024-03-23 17:40:10','2024-03-23 17:40:10'),
-	(14,'xiaofuge',9011,100301,'测试活动',100006,'977898032977','2024-03-30 04:13:20',1,1,1,'completed','562827683573','2024-03-30 12:13:20','2024-03-30 12:13:20'),
-	(15,'xiaofuge',9011,100301,'测试活动',100006,'981492025457','2024-03-30 05:17:51',1,1,1,'completed','827130794336','2024-03-30 13:17:51','2024-03-30 13:17:51'),
-	(16,'xiaofuge',9011,100301,'测试活动',100006,'119662227336','2024-03-30 05:17:51',1,1,1,'completed','150844059982','2024-03-30 13:17:51','2024-03-30 13:17:51'),
-	(17,'xiaofuge',9011,100301,'测试活动',100006,'690133201288','2024-03-30 05:33:39',1,1,1,'completed','953370122326','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(18,'xiaofuge',9011,100301,'测试活动',100006,'593200667289','2024-03-30 05:33:39',1,1,1,'completed','111390727659','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(19,'xiaofuge',9011,100301,'测试活动',100006,'980711076393','2024-03-30 05:33:39',1,1,1,'completed','039423474452','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(20,'xiaofuge',9011,100301,'测试活动',100006,'551375935033','2024-03-30 05:33:39',1,1,1,'completed','280668320055','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(21,'xiaofuge',9011,100301,'测试活动',100006,'716528762190','2024-03-30 05:33:39',1,1,1,'completed','330472003431','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(22,'xiaofuge',9011,100301,'测试活动',100006,'644880195681','2024-03-30 05:33:39',1,1,1,'completed','896655771302','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(23,'xiaofuge',9011,100301,'测试活动',100006,'918009421723','2024-03-30 05:33:39',1,1,1,'completed','223114193931','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(24,'xiaofuge',9011,100301,'测试活动',100006,'414038400484','2024-03-30 05:33:39',1,1,1,'completed','669801912616','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(25,'xiaofuge',9011,100301,'测试活动',100006,'819052152409','2024-03-30 05:33:40',1,1,1,'completed','968823148813','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(26,'xiaofuge',9011,100301,'测试活动',100006,'013685589273','2024-03-30 05:33:40',1,1,1,'completed','281985691959','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(27,'xiaofuge',9011,100301,'测试活动',100006,'694790983278','2024-03-30 05:33:40',1,1,1,'completed','812013952722','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(28,'xiaofuge',9011,100301,'测试活动',100006,'601285862715','2024-03-30 05:33:40',1,1,1,'completed','102122841078','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(29,'xiaofuge',9011,100301,'测试活动',100006,'278549779124','2024-03-30 05:33:40',1,1,1,'completed','795697718772','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(30,'xiaofuge',9011,100301,'测试活动',100006,'867889977246','2024-03-30 05:33:40',1,1,1,'completed','419196278242','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(31,'xiaofuge',9011,100301,'测试活动',100006,'270946272407','2024-03-30 05:33:40',1,1,1,'completed','297043861965','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(32,'xiaofuge',9011,100301,'测试活动',100006,'798392711746','2024-03-30 05:33:40',1,1,1,'completed','721157339512','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(33,'xiaofuge',9011,100301,'测试活动',100006,'037305996439','2024-03-30 05:33:40',1,1,1,'completed','088008719855','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(34,'xiaofuge',9011,100301,'测试活动',100006,'015056893123','2024-03-30 05:33:40',1,1,1,'completed','885793880817','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(35,'xiaofuge',9011,100301,'测试活动',100006,'422734098553','2024-03-30 05:33:40',1,1,1,'completed','048066377262','2024-03-30 13:33:39','2024-03-30 13:33:39'),
-	(36,'xiaofuge',9011,100301,'测试活动',100006,'125534021547','2024-03-30 09:10:06',1,1,1,'completed','237913144976','2024-03-30 17:10:05','2024-03-30 17:10:05'),
-	(37,'xiaofuge',9011,100301,'测试活动',100006,'906577205018','2024-03-30 09:10:06',1,1,1,'completed','257763123780','2024-03-30 17:10:05','2024-03-30 17:10:05'),
-	(38,'xiaofuge',9011,100301,'测试活动',100006,'577878467308','2024-03-30 09:10:06',1,1,1,'completed','690370155629','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(39,'xiaofuge',9011,100301,'测试活动',100006,'130934158588','2024-03-30 09:10:06',1,1,1,'completed','864303749107','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(40,'xiaofuge',9011,100301,'测试活动',100006,'484575318240','2024-03-30 09:10:06',1,1,1,'completed','355946107906','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(41,'xiaofuge',9011,100301,'测试活动',100006,'334219563572','2024-03-30 09:10:06',1,1,1,'completed','629679608889','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(42,'xiaofuge',9011,100301,'测试活动',100006,'905424061364','2024-03-30 09:10:06',1,1,1,'completed','766840362369','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(43,'xiaofuge',9011,100301,'测试活动',100006,'081184848765','2024-03-30 09:10:06',1,1,1,'completed','805402859227','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(44,'xiaofuge',9011,100301,'测试活动',100006,'245273095853','2024-03-30 09:10:06',1,1,1,'completed','333924242550','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(45,'xiaofuge',9011,100301,'测试活动',100006,'645786614176','2024-03-30 09:10:06',1,1,1,'completed','709012965465','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(46,'xiaofuge',9011,100301,'测试活动',100006,'976098448519','2024-03-30 09:10:06',1,1,1,'completed','076464685314','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(47,'xiaofuge',9011,100301,'测试活动',100006,'359533807959','2024-03-30 09:10:06',1,1,1,'completed','501769140520','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(48,'xiaofuge',9011,100301,'测试活动',100006,'069825222776','2024-03-30 09:10:06',1,1,1,'completed','362857642896','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(49,'xiaofuge',9011,100301,'测试活动',100006,'793595913277','2024-03-30 09:10:06',1,1,1,'completed','886499146967','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(50,'xiaofuge',9011,100301,'测试活动',100006,'591290337369','2024-03-30 09:10:06',1,1,1,'completed','756466322485','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(51,'xiaofuge',9011,100301,'测试活动',100006,'216203170946','2024-03-30 09:10:06',1,1,1,'completed','616831586240','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(52,'xiaofuge',9011,100301,'测试活动',100006,'331973376483','2024-03-30 09:10:06',1,1,1,'completed','809200206672','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(53,'xiaofuge',9011,100301,'测试活动',100006,'358968919391','2024-03-30 09:10:06',1,1,1,'completed','619112026689','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(54,'xiaofuge',9011,100301,'测试活动',100006,'094263379883','2024-03-30 09:10:06',1,1,1,'completed','746237303851','2024-03-30 17:10:06','2024-03-30 17:10:06'),
-	(56,'xiaofuge',9011,100301,'测试活动',100006,'381900087970','2024-04-05 06:19:30',1,1,1,'completed','700091009119','2024-04-05 14:19:30','2024-04-05 14:19:30'),
-	(58,'xiaofuge',9011,100301,'测试活动',100006,'434016169087','2024-04-21 10:36:47',1,1,1,'completed','7000910091001','2024-04-21 18:36:46','2024-04-21 18:36:46'),
-	(59,'xiaofuge',9011,100301,'测试活动',100006,'237123329610','2024-04-21 10:37:20',1,1,1,'completed','7000910091002','2024-04-21 18:37:19','2024-04-21 18:37:19'),
-	(60,'xiaofuge',9011,100301,'测试活动',100006,'195450920247','2024-04-21 10:37:41',1,1,1,'completed','7000910091003','2024-04-21 18:37:41','2024-04-21 18:37:41'),
-	(61,'xiaofuge',9011,100301,'测试活动',100006,'910880814122','2024-04-21 10:40:25',1,1,1,'completed','832719848802','2024-04-21 18:40:24','2024-04-21 18:40:24'),
-	(62,'xiaofuge',9011,100301,'测试活动',100006,'521217042254','2024-04-21 10:40:25',1,1,1,'completed','041601984320','2024-04-21 18:40:24','2024-04-21 18:40:24'),
-	(63,'xiaofuge',9011,100301,'测试活动',100006,'299040315943','2024-04-21 10:40:25',1,1,1,'completed','250243206703','2024-04-21 18:40:24','2024-04-21 18:40:24'),
-	(64,'xiaofuge',9011,100301,'测试活动',100006,'659684017852','2024-04-21 10:40:25',1,1,1,'completed','460921198062','2024-04-21 18:40:24','2024-04-21 18:40:24'),
-	(65,'xiaofuge',9011,100301,'测试活动',100006,'062475079006','2024-04-21 10:40:25',1,1,1,'completed','161250520802','2024-04-21 18:40:24','2024-04-21 18:40:24'),
-	(66,'xiaofuge',9011,100301,'测试活动',100006,'396270866526','2024-04-21 10:40:25',1,1,1,'completed','916592331247','2024-04-21 18:40:24','2024-04-21 18:40:24'),
-	(67,'xiaofuge',9011,100301,'测试活动',100006,'753460308738','2024-04-21 10:40:25',1,1,1,'completed','342055194740','2024-04-21 18:40:25','2024-04-21 18:40:25'),
-	(68,'xiaofuge',9011,100301,'测试活动',100006,'747563696488','2024-04-21 10:40:25',1,1,1,'completed','196922733111','2024-04-21 18:40:25','2024-04-21 18:40:25'),
-	(69,'xiaofuge',9011,100301,'测试活动',100006,'213422763673','2024-04-21 10:40:25',1,1,1,'completed','111297173057','2024-04-21 18:40:25','2024-04-21 18:40:25'),
-	(70,'xiaofuge',9011,100301,'测试活动',100006,'550960819802','2024-04-21 10:40:25',1,1,1,'completed','826915908946','2024-04-21 18:40:25','2024-04-21 18:40:25'),
 	(71,'xiaofuge',9011,100301,'测试活动',100006,'761345538871','2024-04-21 10:40:25',1,1,1,'completed','073735003829','2024-04-21 18:40:25','2024-04-21 18:40:25'),
 	(72,'xiaofuge',9011,100301,'测试活动',100006,'837744050164','2024-04-21 10:40:25',1,1,1,'completed','613036507854','2024-04-21 18:40:25','2024-04-21 18:40:25'),
 	(73,'xiaofuge',9011,100301,'测试活动',100006,'766742523760','2024-04-21 10:40:25',1,1,1,'completed','649099837249','2024-04-21 18:40:25','2024-04-21 18:40:25'),
@@ -409,7 +341,10 @@ VALUES
 	(79,'xiaofuge','send_award','62146713103','{\"data\":{\"awardId\":101,\"awardTitle\":\"随机积分\",\"userId\":\"xiaofuge\"},\"id\":\"62146713103\",\"timestamp\":1714196358336}','completed','2024-04-27 13:39:18','2024-04-27 13:39:18'),
 	(80,'xiaofuge','send_award','69804673669','{\"data\":{\"awardId\":101,\"awardTitle\":\"随机积分\",\"userId\":\"xiaofuge\"},\"id\":\"69804673669\",\"timestamp\":1714201196264}','completed','2024-04-27 14:59:56','2024-04-27 14:59:56'),
 	(81,'xiaofuge','send_award','56789986275','{\"data\":{\"awardId\":102,\"awardTitle\":\"OpenAI会员卡\",\"userId\":\"xiaofuge\"},\"id\":\"56789986275\",\"timestamp\":1714201214179}','completed','2024-04-27 15:00:14','2024-04-27 15:00:14'),
-	(82,'xiaofuge','send_award','05612212348','{\"data\":{\"awardId\":104,\"awardTitle\":\"小米台灯\",\"userId\":\"xiaofuge\"},\"id\":\"05612212348\",\"timestamp\":1714201222825}','completed','2024-04-27 15:00:22','2024-04-27 15:00:22');
+	(82,'xiaofuge','send_award','05612212348','{\"data\":{\"awardId\":104,\"awardTitle\":\"小米台灯\",\"userId\":\"xiaofuge\"},\"id\":\"05612212348\",\"timestamp\":1714201222825}','completed','2024-04-27 15:00:22','2024-04-27 15:00:22'),
+	(83,'xiaofuge','send_rebate','35170430024','{\"data\":{\"bizId\":\"xiaofuge_sku_20240430\",\"rebateConfig\":\"9011\",\"rebateType\":\"sign\",\"userId\":\"xiaofuge\"},\"id\":\"35170430024\",\"timestamp\":1714471292871}','completed','2024-04-30 18:01:33','2024-04-30 18:01:33'),
+	(84,'xiaofuge','send_rebate','33541289034','{\"data\":{\"bizId\":\"xiaofuge_sku_20240430\",\"rebateConfig\":\"9011\",\"rebateType\":\"sign\",\"userId\":\"xiaofuge\"},\"id\":\"33541289034\",\"timestamp\":1714471544134}','completed','2024-04-30 18:05:44','2024-04-30 18:05:44'),
+	(85,'xiaofuge','send_rebate','42019106000','{\"data\":{\"bizId\":\"xiaofuge_integral_20240430\",\"rebateConfig\":\"10\",\"rebateType\":\"sign\",\"userId\":\"xiaofuge\"},\"id\":\"42019106000\",\"timestamp\":1714471544137}','completed','2024-04-30 18:05:44','2024-04-30 18:05:44');
 
 /*!40000 ALTER TABLE `task` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -606,6 +541,112 @@ CREATE TABLE `user_award_record_003` (
   KEY `idx_activity_id` (`activity_id`),
   KEY `idx_award_id` (`strategy_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户中奖记录表';
+
+
+
+# 转储表 user_behavior_rebate_order_000
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `user_behavior_rebate_order_000`;
+
+CREATE TABLE `user_behavior_rebate_order_000` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `user_id` varchar(32) NOT NULL COMMENT '用户ID',
+  `order_id` varchar(12) NOT NULL COMMENT '订单ID',
+  `behavior_type` varchar(16) NOT NULL COMMENT '行为类型（sign 签到、openai_pay 支付）',
+  `rebate_desc` varchar(128) NOT NULL COMMENT '返利描述',
+  `rebate_type` varchar(16) NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
+  `rebate_config` varchar(32) NOT NULL COMMENT '返利配置【sku值，积分值】',
+  `biz_id` varchar(64) NOT NULL COMMENT '业务ID - 拼接的唯一值',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_order_id` (`order_id`),
+  UNIQUE KEY `uq_biz_id` (`biz_id`),
+  KEY `idx_user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户行为返利流水订单表';
+
+
+
+# 转储表 user_behavior_rebate_order_001
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `user_behavior_rebate_order_001`;
+
+CREATE TABLE `user_behavior_rebate_order_001` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `user_id` varchar(32) NOT NULL COMMENT '用户ID',
+  `order_id` varchar(12) NOT NULL COMMENT '订单ID',
+  `behavior_type` varchar(16) NOT NULL COMMENT '行为类型（sign 签到、openai_pay 支付）',
+  `rebate_desc` varchar(128) NOT NULL COMMENT '返利描述',
+  `rebate_type` varchar(16) NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
+  `rebate_config` varchar(32) NOT NULL COMMENT '返利配置【sku值，积分值】',
+  `biz_id` varchar(64) NOT NULL COMMENT '业务ID - 拼接的唯一值',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_order_id` (`order_id`),
+  UNIQUE KEY `uq_biz_id` (`biz_id`),
+  KEY `idx_user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户行为返利流水订单表';
+
+LOCK TABLES `user_behavior_rebate_order_001` WRITE;
+/*!40000 ALTER TABLE `user_behavior_rebate_order_001` DISABLE KEYS */;
+
+INSERT INTO `user_behavior_rebate_order_001` (`id`, `user_id`, `order_id`, `behavior_type`, `rebate_desc`, `rebate_type`, `rebate_config`, `biz_id`, `create_time`, `update_time`)
+VALUES
+	(1,'xiaofuge','833814327101','sign','签到返利','sku','9011','xiaofuge_sku_20240430','2024-04-30 18:01:32','2024-04-30 18:01:32'),
+	(3,'xiaofuge','509399206701','sign','签到返利-积分','integral','10','xiaofuge_integral_20240430','2024-04-30 18:05:44','2024-04-30 18:05:44');
+
+/*!40000 ALTER TABLE `user_behavior_rebate_order_001` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# 转储表 user_behavior_rebate_order_002
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `user_behavior_rebate_order_002`;
+
+CREATE TABLE `user_behavior_rebate_order_002` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `user_id` varchar(32) NOT NULL COMMENT '用户ID',
+  `order_id` varchar(12) NOT NULL COMMENT '订单ID',
+  `behavior_type` varchar(16) NOT NULL COMMENT '行为类型（sign 签到、openai_pay 支付）',
+  `rebate_desc` varchar(128) NOT NULL COMMENT '返利描述',
+  `rebate_type` varchar(16) NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
+  `rebate_config` varchar(32) NOT NULL COMMENT '返利配置【sku值，积分值】',
+  `biz_id` varchar(64) NOT NULL COMMENT '业务ID - 拼接的唯一值',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_order_id` (`order_id`),
+  UNIQUE KEY `uq_biz_id` (`biz_id`),
+  KEY `idx_user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户行为返利流水订单表';
+
+
+
+# 转储表 user_behavior_rebate_order_003
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `user_behavior_rebate_order_003`;
+
+CREATE TABLE `user_behavior_rebate_order_003` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `user_id` varchar(32) NOT NULL COMMENT '用户ID',
+  `order_id` varchar(12) NOT NULL COMMENT '订单ID',
+  `behavior_type` varchar(16) NOT NULL COMMENT '行为类型（sign 签到、openai_pay 支付）',
+  `rebate_desc` varchar(128) NOT NULL COMMENT '返利描述',
+  `rebate_type` varchar(16) NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
+  `rebate_config` varchar(32) NOT NULL COMMENT '返利配置【sku值，积分值】',
+  `biz_id` varchar(64) NOT NULL COMMENT '业务ID - 拼接的唯一值',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_order_id` (`order_id`),
+  UNIQUE KEY `uq_biz_id` (`biz_id`),
+  KEY `idx_user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户行为返利流水订单表';
 
 
 

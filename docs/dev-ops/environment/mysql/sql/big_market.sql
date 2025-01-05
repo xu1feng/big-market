@@ -7,7 +7,7 @@
 #
 # 主机: 127.0.0.1 (MySQL 5.6.39)
 # 数据库: big_market
-# 生成时间: 2024-04-27 07:10:59 +0000
+# 生成时间: 2024-04-30 10:19:11 +0000
 # ************************************************************
 
 
@@ -55,6 +55,36 @@ VALUES
 	(10,100,'user_credit_blacklist','1','黑名单积分','2024-01-06 12:30:40','2024-01-06 12:30:46');
 
 /*!40000 ALTER TABLE `award` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# 转储表 daily_behavior_rebate
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `daily_behavior_rebate`;
+
+CREATE TABLE `daily_behavior_rebate` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `behavior_type` varchar(16) NOT NULL COMMENT '行为类型（sign 签到、openai_pay 支付）',
+  `rebate_desc` varchar(128) NOT NULL COMMENT '返利描述',
+  `rebate_type` varchar(16) NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
+  `rebate_config` varchar(32) NOT NULL COMMENT '返利配置',
+  `state` varchar(12) NOT NULL COMMENT '状态（open 开启、close 关闭）',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_behavior_type` (`behavior_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='日常行为返利活动配置';
+
+LOCK TABLES `daily_behavior_rebate` WRITE;
+/*!40000 ALTER TABLE `daily_behavior_rebate` DISABLE KEYS */;
+
+INSERT INTO `daily_behavior_rebate` (`id`, `behavior_type`, `rebate_desc`, `rebate_type`, `rebate_config`, `state`, `create_time`, `update_time`)
+VALUES
+	(1,'sign','签到返利-sku额度','sku','9011','open','2024-04-30 09:32:46','2024-04-30 18:05:23'),
+	(2,'sign','签到返利-积分','integral','10','open','2024-04-30 09:32:46','2024-04-30 18:05:27');
+
+/*!40000 ALTER TABLE `daily_behavior_rebate` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -114,7 +144,7 @@ LOCK TABLES `raffle_activity_count` WRITE;
 
 INSERT INTO `raffle_activity_count` (`id`, `activity_count_id`, `total_count`, `day_count`, `month_count`, `create_time`, `update_time`)
 VALUES
-	(1,11101,1,1,1,'2024-03-09 10:15:42','2024-03-16 12:30:54');
+	(1,11101,10000,1000,1000,'2024-03-09 10:15:42','2024-04-27 15:49:37');
 
 /*!40000 ALTER TABLE `raffle_activity_count` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -144,7 +174,7 @@ LOCK TABLES `raffle_activity_sku` WRITE;
 
 INSERT INTO `raffle_activity_sku` (`id`, `sku`, `activity_id`, `activity_count_id`, `stock_count`, `stock_count_surplus`, `create_time`, `update_time`)
 VALUES
-	(1,9011,100301,11101,20,0,'2024-03-16 11:41:09','2024-04-21 18:40:25');
+	(1,9011,100301,11101,100000,100000,'2024-03-16 11:41:09','2024-04-27 15:49:25');
 
 /*!40000 ALTER TABLE `raffle_activity_sku` ENABLE KEYS */;
 UNLOCK TABLES;
