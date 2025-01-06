@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * @description: 更新奖品库存的任务 为了不让更新库存的压力打到数据库中，这里采用了redis更新缓存库存，异步队列更新数据库，数据库表最终一致即可。
  */
 @Slf4j
-@Component
+@Component()
 public class UpdateAwardStockJob {
 
     @Resource

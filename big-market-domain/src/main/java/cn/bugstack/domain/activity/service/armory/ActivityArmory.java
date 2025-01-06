@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Slf4j
 @Service
-public class ActivityArmory implements IActivityArmory, IActivityDispatch{
+public class ActivityArmory implements IActivityArmory, IActivityDispatch {
 
     @Resource
     private IActivityRepository activityRepository;
@@ -62,4 +62,5 @@ public class ActivityArmory implements IActivityArmory, IActivityDispatch{
         String cacheKey = Constants.RedisKey.ACTIVITY_SKU_STOCK_COUNT_KEY + sku;
         return activityRepository.subtractionActivitySkuStock(sku, cacheKey, endDateTime);
     }
+
 }

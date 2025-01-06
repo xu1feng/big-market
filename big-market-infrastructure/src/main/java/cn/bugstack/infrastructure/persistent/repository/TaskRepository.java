@@ -21,7 +21,6 @@ public class TaskRepository implements ITaskRepository {
 
     @Resource
     private ITaskDao taskDao;
-
     @Resource
     private EventPublisher eventPublisher;
 

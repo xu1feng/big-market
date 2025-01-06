@@ -14,7 +14,7 @@ import java.util.List;
  * @description: 消息任务服务接口
  */
 @Service
-public class TaskService implements ITaskService{
+public class TaskService implements ITaskService {
 
     @Resource
     private ITaskRepository taskRepository;

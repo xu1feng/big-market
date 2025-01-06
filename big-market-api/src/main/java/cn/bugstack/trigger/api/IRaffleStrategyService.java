@@ -13,7 +13,6 @@ import java.util.List;
  * @date: 2024/12/28 16:29
  * @description: 抽奖服务接口
  */
-
 public interface IRaffleStrategyService {
 
     /**

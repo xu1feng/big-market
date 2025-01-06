@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class BehaviorRebateOrderEntity {
 
     /** 用户ID */

@@ -120,7 +120,7 @@ public class StrategyRepository implements IStrategyRepository {
         Strategy strategy = strategyDao.queryStrategyByStrategyId(strategyId);
         if (null == strategy) return StrategyEntity.builder().build();
         strategyEntity = StrategyEntity.builder()
-                .strategId(strategy.getStrategId())
+                .strategyId(strategy.getStrategId())
                 .strategyDesc(strategy.getStrategyDesc())
                 .ruleModels(strategy.getRuleModels())
                 .build();

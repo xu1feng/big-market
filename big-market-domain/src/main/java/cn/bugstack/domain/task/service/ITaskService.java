@@ -17,7 +17,7 @@ public interface ITaskService {
      *
      * @return 未发送的任务消息列表10条
      */
-    List<cn.bugstack.domain.task.model.entity.TaskEntity> queryNoSendMessageTaskList();
+    List<TaskEntity> queryNoSendMessageTaskList();
 
     void sendMessage(TaskEntity taskEntity);
 

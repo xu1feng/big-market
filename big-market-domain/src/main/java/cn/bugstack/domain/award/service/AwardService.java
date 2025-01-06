@@ -17,17 +17,16 @@ import javax.annotation.Resource;
  * @description:
  */
 @Service
-public class AwardService implements IAwardService{
+public class AwardService implements IAwardService {
 
     @Resource
     private IAwardRepository awardRepository;
-
     @Resource
     private SendAwardMessageEvent sendAwardMessageEvent;
 
     @Override
     public void saveUserAwardRecord(UserAwardRecordEntity userAwardRecordEntity) {
-        // 构建消息实体对象
+        // 构建消息对象
         SendAwardMessageEvent.SendAwardMessage sendAwardMessage = new SendAwardMessageEvent.SendAwardMessage();
         sendAwardMessage.setUserId(userAwardRecordEntity.getUserId());
         sendAwardMessage.setAwardId(userAwardRecordEntity.getAwardId());
@@ -35,7 +34,7 @@ public class AwardService implements IAwardService{
 
         BaseEvent.EventMessage<SendAwardMessageEvent.SendAwardMessage> sendAwardMessageEventMessage = sendAwardMessageEvent.buildEventMessage(sendAwardMessage);
 
-        // 构建任务实体对象
+        // 构建任务对象
         TaskEntity taskEntity = new TaskEntity();
         taskEntity.setUserId(userAwardRecordEntity.getUserId());
         taskEntity.setTopic(sendAwardMessageEvent.topic());

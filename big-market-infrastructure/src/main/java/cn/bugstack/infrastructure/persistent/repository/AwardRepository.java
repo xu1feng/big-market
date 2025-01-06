@@ -17,6 +17,7 @@ import cn.bugstack.types.exception.AppException;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -28,7 +29,7 @@ import javax.annotation.Resource;
  * @description: 奖品仓储服务
  */
 @Slf4j
-@Repository
+@Component
 public class AwardRepository implements IAwardRepository {
 
     @Resource

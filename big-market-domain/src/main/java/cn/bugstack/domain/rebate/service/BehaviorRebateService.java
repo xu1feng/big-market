@@ -24,11 +24,10 @@ import java.util.List;
  * @description: 行为返利服务实现
  */
 @Service
-public class BehaviorRebateService implements IBehaviorRebateService{
+public class BehaviorRebateService implements IBehaviorRebateService {
 
     @Resource
     private IBehaviorRebateRepository behaviorRebateRepository;
-
     @Resource
     private SendRebateMessageEvent sendRebateMessageEvent;
 
@@ -36,8 +35,7 @@ public class BehaviorRebateService implements IBehaviorRebateService{
     public List<String> createOrder(BehaviorEntity behaviorEntity) {
         // 1. 查询返利配置
         List<DailyBehaviorRebateVO> dailyBehaviorRebateVOS = behaviorRebateRepository.queryDailyBehaviorRebateConfig(behaviorEntity.getBehaviorTypeVO());
-        if (null == dailyBehaviorRebateVOS || dailyBehaviorRebateVOS.isEmpty())
-            return new ArrayList<>();
+        if (null == dailyBehaviorRebateVOS || dailyBehaviorRebateVOS.isEmpty()) return new ArrayList<>();
 
         // 2. 构建聚合对象
         List<String> orderIds = new ArrayList<>();
@@ -46,18 +44,17 @@ public class BehaviorRebateService implements IBehaviorRebateService{
             // 拼装业务ID；用户ID_返利类型_外部透彻业务ID
             String bizId = behaviorEntity.getUserId() + Constants.UNDERLINE + dailyBehaviorRebateVO.getRebateType() + Constants.UNDERLINE + behaviorEntity.getOutBusinessNo();
             BehaviorRebateOrderEntity behaviorRebateOrderEntity = BehaviorRebateOrderEntity.builder()
-                        .userId(behaviorEntity.getUserId())
-                        .orderId(RandomStringUtils.randomNumeric(12))
-                        .behaviorType(dailyBehaviorRebateVO.getBehaviorType())
-                        .rebateDesc(dailyBehaviorRebateVO.getRebateDesc())
-                        .rebateType(dailyBehaviorRebateVO.getRebateType())
-                        .rebateConfig(dailyBehaviorRebateVO.getRebateConfig())
-                        .bizId(bizId)
-                        .build();
-
+                    .userId(behaviorEntity.getUserId())
+                    .orderId(RandomStringUtils.randomNumeric(12))
+                    .behaviorType(dailyBehaviorRebateVO.getBehaviorType())
+                    .rebateDesc(dailyBehaviorRebateVO.getRebateDesc())
+                    .rebateType(dailyBehaviorRebateVO.getRebateType())
+                    .rebateConfig(dailyBehaviorRebateVO.getRebateConfig())
+                    .bizId(bizId)
+                    .build();
             orderIds.add(behaviorRebateOrderEntity.getOrderId());
 
-            // MQ 消息
+            // MQ 消息对象
             SendRebateMessageEvent.RebateMessage rebateMessage = SendRebateMessageEvent.RebateMessage.builder()
                     .userId(behaviorEntity.getUserId())
                     .rebateType(dailyBehaviorRebateVO.getRebateType())

@@ -36,7 +36,6 @@ public class SendRebateMessageEvent extends BaseEvent<SendRebateMessageEvent.Reb
         return topic;
     }
 
-
     @Data
     @Builder
     @AllArgsConstructor

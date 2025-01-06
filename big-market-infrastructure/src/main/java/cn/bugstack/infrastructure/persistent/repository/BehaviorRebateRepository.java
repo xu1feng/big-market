@@ -19,6 +19,7 @@ import cn.bugstack.types.exception.AppException;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -33,7 +34,7 @@ import java.util.List;
  * @description: 行为返利服务仓储实现
  */
 @Slf4j
-@Repository
+@Component
 public class BehaviorRebateRepository implements IBehaviorRebateRepository {
 
     @Resource
@@ -48,6 +49,21 @@ public class BehaviorRebateRepository implements IBehaviorRebateRepository {
     private TransactionTemplate transactionTemplate;
     @Resource
     private EventPublisher eventPublisher;
+
+    @Override
+    public List<DailyBehaviorRebateVO> queryDailyBehaviorRebateConfig(BehaviorTypeVO behaviorTypeVO) {
+        List<DailyBehaviorRebate> dailyBehaviorRebates = dailyBehaviorRebateDao.queryDailyBehaviorRebateByBehaviorType(behaviorTypeVO.getCode());
+        List<DailyBehaviorRebateVO> dailyBehaviorRebateVOS = new ArrayList<>(dailyBehaviorRebates.size());
+        for (DailyBehaviorRebate dailyBehaviorRebate : dailyBehaviorRebates) {
+            dailyBehaviorRebateVOS.add(DailyBehaviorRebateVO.builder()
+                    .behaviorType(dailyBehaviorRebate.getBehaviorType())
+                    .rebateDesc(dailyBehaviorRebate.getRebateDesc())
+                    .rebateType(dailyBehaviorRebate.getRebateType())
+                    .rebateConfig(dailyBehaviorRebate.getRebateConfig())
+                    .build());
+        }
+        return dailyBehaviorRebateVOS;
+    }
 
     @Override
     public void saveUserRebateRecord(String userId, List<BehaviorRebateAggregate> behaviorRebateAggregates) {
@@ -67,6 +83,7 @@ public class BehaviorRebateRepository implements IBehaviorRebateRepository {
                         userBehaviorRebateOrder.setRebateConfig(behaviorRebateOrderEntity.getRebateConfig());
                         userBehaviorRebateOrder.setBizId(behaviorRebateOrderEntity.getBizId());
                         userBehaviorRebateOrderDao.insert(userBehaviorRebateOrder);
+
                         // 任务对象
                         TaskEntity taskEntity = behaviorRebateAggregate.getTaskEntity();
                         Task task = new Task();
@@ -81,14 +98,14 @@ public class BehaviorRebateRepository implements IBehaviorRebateRepository {
                 } catch (DuplicateKeyException e) {
                     status.setRollbackOnly();
                     log.error("写入返利记录，唯一索引冲突 userId: {}", userId, e);
-                    throw new AppException(ResponseCode.INDEX_DUP.getCode(), e);
+                    throw new AppException(ResponseCode.INDEX_DUP.getCode(), ResponseCode.INDEX_DUP.getInfo());
                 }
             });
         } finally {
             dbRouter.clear();
         }
 
-        // 同步发送 MQ 消息
+        // 同步发送MQ消息
         for (BehaviorRebateAggregate behaviorRebateAggregate : behaviorRebateAggregates) {
             TaskEntity taskEntity = behaviorRebateAggregate.getTaskEntity();
             Task task = new Task();
@@ -104,21 +121,7 @@ public class BehaviorRebateRepository implements IBehaviorRebateRepository {
                 taskDao.updateTaskSendMessageFail(task);
             }
         }
-    }
 
-    @Override
-    public List<DailyBehaviorRebateVO> queryDailyBehaviorRebateConfig(BehaviorTypeVO behaviorTypeVO) {
-        List<DailyBehaviorRebate> dailyBehaviorRebates = dailyBehaviorRebateDao.queryDailyBehaviorRebateByBehaviorType(behaviorTypeVO.getCode());
-        List<DailyBehaviorRebateVO> dailyBehaviorRebateVOS = new ArrayList<>(dailyBehaviorRebates.size());
-        for (DailyBehaviorRebate dailyBehaviorRebate : dailyBehaviorRebates) {
-            dailyBehaviorRebateVOS.add(DailyBehaviorRebateVO.builder()
-                    .behaviorType(dailyBehaviorRebate.getBehaviorType())
-                    .rebateDesc(dailyBehaviorRebate.getRebateDesc())
-                    .rebateType(dailyBehaviorRebate.getRebateType())
-                    .rebateConfig(dailyBehaviorRebate.getRebateConfig())
-                    .build());
-        }
-        return dailyBehaviorRebateVOS;
     }
 
 }
