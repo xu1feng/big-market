@@ -4,6 +4,8 @@ import cn.bugstack.domain.activity.service.armory.IActivityArmory;
 import cn.bugstack.trigger.api.IRaffleActivityService;
 import cn.bugstack.trigger.api.dto.ActivityDrawRequestDTO;
 import cn.bugstack.trigger.api.dto.ActivityDrawResponseDTO;
+import cn.bugstack.trigger.api.dto.UserActivityAccountRequestDTO;
+import cn.bugstack.trigger.api.dto.UserActivityAccountResponseDTO;
 import cn.bugstack.types.model.Response;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
@@ -28,14 +30,6 @@ public class RaffleActivityControllerTest {
     @Resource
     private IRaffleActivityService raffleActivityService;
 
-    @Resource
-    private IActivityArmory activityArmory;
-
-    @Test
-    public void setUp() {
-        log.info("装配活动：{}", activityArmory.assembleActivitySku(9011L));
-    }
-
     @Test
     public void test_armory() {
         Response<Boolean> response = raffleActivityService.armory(100301L);
@@ -44,18 +38,39 @@ public class RaffleActivityControllerTest {
 
     @Test
     public void test_draw() {
-        ActivityDrawRequestDTO request = new ActivityDrawRequestDTO();
-        request.setActivityId(100301L);
-        request.setUserId("xiaofuge");
-        Response<ActivityDrawResponseDTO> response = raffleActivityService.draw(request);
+        for (int i = 0; i < 1; i++) {
+            ActivityDrawRequestDTO request = new ActivityDrawRequestDTO();
+            request.setActivityId(100301L);
+            request.setUserId("xiaofuge");
+            Response<ActivityDrawResponseDTO> response = raffleActivityService.draw(request);
 
-        log.info("请求参数：{}", JSON.toJSONString(request));
+            log.info("请求参数：{}", JSON.toJSONString(request));
+            log.info("测试结果：{}", JSON.toJSONString(response));
+        }
+    }
+
+    @Test
+    public void test_calendarSignRebate() {
+        Response<Boolean> response = raffleActivityService.calendarSignRebate("xuyifeng33");
         log.info("测试结果：{}", JSON.toJSONString(response));
     }
 
     @Test
-    public void test_calendarSignRebate(){
-        Response<Boolean> response = raffleActivityService.calendarSignRebate("xiaofuge");
+    public void test_isCalendarSignRebate() {
+        Response<Boolean> response = raffleActivityService.isCalendarSignRebate("xuyifeng33");
+        log.info("测试结果：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void test_queryUserActivityAccount() {
+        UserActivityAccountRequestDTO request = new UserActivityAccountRequestDTO();
+        request.setActivityId(100301L);
+        request.setUserId("xuyifeng33");
+
+        // 查询数据
+        Response<UserActivityAccountResponseDTO> response = raffleActivityService.queryUserActivityAccount(request);
+
+        log.info("请求参数：{}", JSON.toJSONString(request));
         log.info("测试结果：{}", JSON.toJSONString(response));
     }
 
