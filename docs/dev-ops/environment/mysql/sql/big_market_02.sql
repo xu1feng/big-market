@@ -7,7 +7,7 @@
 #
 # 主机: 127.0.0.1 (MySQL 5.6.39)
 # 数据库: big_market_02
-# 生成时间: 2024-05-04 06:43:22 +0000
+# 生成时间: 2024-05-25 02:56:37 +0000
 # ************************************************************
 
 
@@ -50,7 +50,9 @@ INSERT INTO `raffle_activity_account` (`id`, `user_id`, `activity_id`, `total_co
 VALUES
 	(2,'xiaofuge',100301,4,3,4,3,4,3,'2024-03-23 12:40:56','2024-03-23 13:16:40'),
 	(3,'xiaofuge1',100301,10,9,10,9,10,9,'2024-05-03 16:01:44','2024-05-04 12:51:32'),
-	(4,'xiaofuge2',100301,20,5,20,5,20,5,'2024-05-04 12:52:58','2024-05-04 13:57:32');
+	(4,'xiaofuge2',100301,20,5,20,5,20,5,'2024-05-04 12:52:58','2024-05-04 13:57:32'),
+	(5,'user001',100301,100,96,100,96,100,96,'2024-05-24 22:30:54','2024-05-24 22:34:37'),
+	(6,'user002',100301,100,100,100,100,100,100,'2024-05-24 22:30:54','2024-05-24 22:30:54');
 
 /*!40000 ALTER TABLE `raffle_activity_account` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -80,7 +82,8 @@ LOCK TABLES `raffle_activity_account_day` WRITE;
 INSERT INTO `raffle_activity_account_day` (`id`, `user_id`, `activity_id`, `day`, `day_count`, `day_count_surplus`, `create_time`, `update_time`)
 VALUES
 	(1,'xiaofuge1',100301,'2024-05-04',10,9,'2024-05-04 12:51:32','2024-05-04 12:51:32'),
-	(2,'xiaofuge2',100301,'2024-05-04',20,5,'2024-05-04 12:53:01','2024-05-04 13:57:32');
+	(2,'xiaofuge2',100301,'2024-05-04',20,5,'2024-05-04 12:53:01','2024-05-04 13:57:32'),
+	(3,'user001',100301,'2024-05-24',100,96,'2024-05-24 22:31:47','2024-05-24 22:34:37');
 
 /*!40000 ALTER TABLE `raffle_activity_account_day` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -110,7 +113,8 @@ LOCK TABLES `raffle_activity_account_month` WRITE;
 INSERT INTO `raffle_activity_account_month` (`id`, `user_id`, `activity_id`, `month`, `month_count`, `month_count_surplus`, `create_time`, `update_time`)
 VALUES
 	(1,'xiaofuge1',100301,'2024-05',10,9,'2024-05-04 12:51:32','2024-05-04 12:51:32'),
-	(2,'xiaofuge2',100301,'2024-05',20,5,'2024-05-04 12:53:01','2024-05-04 13:57:32');
+	(2,'xiaofuge2',100301,'2024-05',20,5,'2024-05-04 12:53:01','2024-05-04 13:57:32'),
+	(3,'user001',100301,'2024-05',100,96,'2024-05-24 22:31:47','2024-05-24 22:34:37');
 
 /*!40000 ALTER TABLE `raffle_activity_account_month` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -148,7 +152,8 @@ LOCK TABLES `raffle_activity_order_000` WRITE;
 
 INSERT INTO `raffle_activity_order_000` (`id`, `user_id`, `sku`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `total_count`, `day_count`, `month_count`, `state`, `out_business_no`, `create_time`, `update_time`)
 VALUES
-	(1,'xiaofuge1',9011,100301,'测试活动',100006,'831917125310','2024-05-03 08:01:44',10,10,10,'completed','xiaofuge1_sku_20240503','2024-05-03 16:01:44','2024-05-03 16:01:44');
+	(1,'xiaofuge1',9011,100301,'测试活动',100006,'831917125310','2024-05-03 08:01:44',10,10,10,'completed','xiaofuge1_sku_20240503','2024-05-03 16:01:44','2024-05-03 16:01:44'),
+	(2,'user001',9011,100301,'测试活动',100006,'923549663927','2024-05-24 14:30:55',100,100,100,'completed','user001_sku_20240524','2024-05-24 22:30:54','2024-05-24 22:30:54');
 
 /*!40000 ALTER TABLE `raffle_activity_order_000` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -186,7 +191,8 @@ LOCK TABLES `raffle_activity_order_001` WRITE;
 
 INSERT INTO `raffle_activity_order_001` (`id`, `user_id`, `sku`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `total_count`, `day_count`, `month_count`, `state`, `out_business_no`, `create_time`, `update_time`)
 VALUES
-	(3,'xiaofuge',9011,100301,'测试活动',100006,'383240888158','2024-03-23 04:38:23',1,1,1,'completed','700091009111','2024-03-23 12:38:23','2024-03-23 12:38:23');
+	(3,'xiaofuge',9011,100301,'测试活动',100006,'383240888158','2024-03-23 04:38:23',1,1,1,'completed','700091009111','2024-03-23 12:38:23','2024-03-23 12:38:23'),
+	(4,'user002',9011,100301,'测试活动',100006,'165083654323','2024-05-24 14:30:55',100,100,100,'completed','user002_sku_20240524','2024-05-24 22:30:54','2024-05-24 22:30:54');
 
 /*!40000 ALTER TABLE `raffle_activity_order_001` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -305,7 +311,15 @@ VALUES
 	(19,'xiaofuge2','send_award','82372459539','{\"data\":{\"awardId\":103,\"awardTitle\":\"支付优惠券\",\"userId\":\"xiaofuge2\"},\"id\":\"82372459539\",\"timestamp\":1714802223761}','completed','2024-05-04 13:57:03','2024-05-04 13:57:03'),
 	(20,'xiaofuge2','send_award','56572252891','{\"data\":{\"awardId\":103,\"awardTitle\":\"支付优惠券\",\"userId\":\"xiaofuge2\"},\"id\":\"56572252891\",\"timestamp\":1714802231616}','completed','2024-05-04 13:57:11','2024-05-04 13:57:11'),
 	(21,'xiaofuge2','send_award','40606839519','{\"data\":{\"awardId\":103,\"awardTitle\":\"支付优惠券\",\"userId\":\"xiaofuge2\"},\"id\":\"40606839519\",\"timestamp\":1714802240195}','completed','2024-05-04 13:57:20','2024-05-04 13:57:20'),
-	(22,'xiaofuge2','send_award','99508680162','{\"data\":{\"awardId\":102,\"awardTitle\":\"OpenAI会员卡\",\"userId\":\"xiaofuge2\"},\"id\":\"99508680162\",\"timestamp\":1714802252287}','completed','2024-05-04 13:57:32','2024-05-04 13:57:32');
+	(22,'xiaofuge2','send_award','99508680162','{\"data\":{\"awardId\":102,\"awardTitle\":\"OpenAI会员卡\",\"userId\":\"xiaofuge2\"},\"id\":\"99508680162\",\"timestamp\":1714802252287}','completed','2024-05-04 13:57:32','2024-05-04 13:57:32'),
+	(23,'user001','send_rebate','73773124323','{\"data\":{\"bizId\":\"user001_sku_20240524\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"user001\"},\"id\":\"73773124323\",\"timestamp\":1716560709722}','completed','2024-05-24 22:25:09','2024-05-24 22:25:10'),
+	(24,'user001','send_rebate','02391103632','{\"data\":{\"bizId\":\"user001_integral_20240524\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"user001\"},\"id\":\"02391103632\",\"timestamp\":1716560709725}','completed','2024-05-24 22:25:09','2024-05-24 22:25:10'),
+	(25,'user002','send_rebate','49594929112','{\"data\":{\"bizId\":\"user002_sku_20240524\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"user002\"},\"id\":\"49594929112\",\"timestamp\":1716560951288}','completed','2024-05-24 22:29:11','2024-05-24 22:29:11'),
+	(26,'user002','send_rebate','57121773264','{\"data\":{\"bizId\":\"user002_integral_20240524\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"user002\"},\"id\":\"57121773264\",\"timestamp\":1716560951292}','completed','2024-05-24 22:29:11','2024-05-24 22:29:11'),
+	(27,'user001','send_award','97971125221','{\"data\":{\"awardConfig\":\"0.01,1\",\"awardId\":101,\"awardTitle\":\"随机积分\",\"orderId\":\"391668886086\",\"userId\":\"user001\"},\"id\":\"97971125221\",\"timestamp\":1716561114657}','completed','2024-05-24 22:31:55','2024-05-24 22:31:55'),
+	(28,'user001','send_award','89552334625','{\"data\":{\"awardConfig\":\"0.01,1\",\"awardId\":101,\"awardTitle\":\"随机积分\",\"orderId\":\"179191128326\",\"userId\":\"user001\"},\"id\":\"89552334625\",\"timestamp\":1716561182606}','completed','2024-05-24 22:33:02','2024-05-24 22:33:02'),
+	(29,'user001','send_award','12743392424','{\"data\":{\"awardConfig\":\"0.01,1\",\"awardId\":101,\"awardTitle\":\"随机积分\",\"orderId\":\"320625987421\",\"userId\":\"user001\"},\"id\":\"12743392424\",\"timestamp\":1716561244275}','completed','2024-05-24 22:34:04','2024-05-24 22:34:04'),
+	(30,'user001','send_award','50175032521','{\"data\":{\"awardConfig\":\"0.01,1\",\"awardId\":101,\"awardTitle\":\"随机积分\",\"orderId\":\"290879207548\",\"userId\":\"user001\"},\"id\":\"50175032521\",\"timestamp\":1716561277990}','completed','2024-05-24 22:34:38','2024-05-24 22:34:38');
 
 /*!40000 ALTER TABLE `task` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -340,7 +354,11 @@ LOCK TABLES `user_award_record_000` WRITE;
 
 INSERT INTO `user_award_record_000` (`id`, `user_id`, `activity_id`, `strategy_id`, `order_id`, `award_id`, `award_title`, `award_time`, `award_state`, `create_time`, `update_time`)
 VALUES
-	(1,'xiaofuge1',100301,100006,'386938913572',104,'小米台灯','2024-05-04 04:51:33','create','2024-05-04 12:51:32','2024-05-04 12:51:32');
+	(1,'xiaofuge1',100301,100006,'386938913572',104,'小米台灯','2024-05-04 04:51:33','create','2024-05-04 12:51:32','2024-05-04 12:51:32'),
+	(2,'user001',100301,100006,'391668886086',101,'随机积分','2024-05-24 14:31:47','create','2024-05-24 22:31:55','2024-05-24 22:31:55'),
+	(3,'user001',100301,100006,'179191128326',101,'随机积分','2024-05-24 14:33:03','create','2024-05-24 22:33:02','2024-05-24 22:33:02'),
+	(4,'user001',100301,100006,'320625987421',101,'随机积分','2024-05-24 14:34:02','completed','2024-05-24 22:34:04','2024-05-24 22:34:19'),
+	(5,'user001',100301,100006,'290879207548',101,'随机积分','2024-05-24 14:34:38','completed','2024-05-24 22:34:38','2024-05-24 22:34:38');
 
 /*!40000 ALTER TABLE `user_award_record_000` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -476,7 +494,9 @@ LOCK TABLES `user_behavior_rebate_order_000` WRITE;
 INSERT INTO `user_behavior_rebate_order_000` (`id`, `user_id`, `order_id`, `behavior_type`, `rebate_desc`, `rebate_type`, `rebate_config`, `out_business_no`, `biz_id`, `create_time`, `update_time`)
 VALUES
 	(5,'xiaofuge1','883971522401','sign','签到返利-sku额度','sku','9011','20240503','xiaofuge1_sku_20240503','2024-05-03 16:01:42','2024-05-03 16:01:42'),
-	(6,'xiaofuge1','995944930386','sign','签到返利-积分','integral','10','20240503','xiaofuge1_integral_20240503','2024-05-03 16:01:43','2024-05-03 16:01:43');
+	(6,'xiaofuge1','995944930386','sign','签到返利-积分','integral','10','20240503','xiaofuge1_integral_20240503','2024-05-03 16:01:43','2024-05-03 16:01:43'),
+	(7,'user001','153309768984','sign','签到返利-sku额度','sku','9011','20240524','user001_sku_20240524','2024-05-24 22:25:09','2024-05-24 22:25:09'),
+	(8,'user001','922397055482','sign','签到返利-积分','integral','10','20240524','user001_integral_20240524','2024-05-24 22:25:09','2024-05-24 22:25:09');
 
 /*!40000 ALTER TABLE `user_behavior_rebate_order_000` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -505,6 +525,16 @@ CREATE TABLE `user_behavior_rebate_order_001` (
   KEY `idx_user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户行为返利流水订单表';
 
+LOCK TABLES `user_behavior_rebate_order_001` WRITE;
+/*!40000 ALTER TABLE `user_behavior_rebate_order_001` DISABLE KEYS */;
+
+INSERT INTO `user_behavior_rebate_order_001` (`id`, `user_id`, `order_id`, `behavior_type`, `rebate_desc`, `rebate_type`, `rebate_config`, `out_business_no`, `biz_id`, `create_time`, `update_time`)
+VALUES
+	(1,'user002','791847185524','sign','签到返利-sku额度','sku','9011','20240524','user002_sku_20240524','2024-05-24 22:29:11','2024-05-24 22:29:11'),
+	(2,'user002','119018837248','sign','签到返利-积分','integral','10','20240524','user002_integral_20240524','2024-05-24 22:29:11','2024-05-24 22:29:11');
+
+/*!40000 ALTER TABLE `user_behavior_rebate_order_001` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # 转储表 user_behavior_rebate_order_002
@@ -567,6 +597,33 @@ VALUES
 UNLOCK TABLES;
 
 
+# 转储表 user_credit_account
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `user_credit_account`;
+
+CREATE TABLE `user_credit_account` (
+  `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `user_id` varchar(32) NOT NULL COMMENT '用户ID',
+  `total_amount` decimal(10,2) NOT NULL COMMENT '总积分，显示总账户值，记得一个人获得的总积分',
+  `available_amount` decimal(10,2) NOT NULL COMMENT '可用积分，每次扣减的值',
+  `account_status` varchar(8) NOT NULL COMMENT '账户状态【open - 可用，close - 冻结】',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户积分账户';
+
+LOCK TABLES `user_credit_account` WRITE;
+/*!40000 ALTER TABLE `user_credit_account` DISABLE KEYS */;
+
+INSERT INTO `user_credit_account` (`id`, `user_id`, `total_amount`, `available_amount`, `account_status`, `create_time`, `update_time`)
+VALUES
+	(2,'user001',0.71,0.71,'open','2024-05-24 22:34:19','2024-05-24 22:34:38');
+
+/*!40000 ALTER TABLE `user_credit_account` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # 转储表 user_raffle_order_000
 # ------------------------------------------------------------
 
@@ -593,7 +650,11 @@ LOCK TABLES `user_raffle_order_000` WRITE;
 
 INSERT INTO `user_raffle_order_000` (`id`, `user_id`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `order_state`, `create_time`, `update_time`)
 VALUES
-	(1,'xiaofuge1',100301,'测试活动',100006,'386938913572','2024-05-04 04:51:32','used','2024-05-04 12:51:32','2024-05-04 12:51:32');
+	(1,'xiaofuge1',100301,'测试活动',100006,'386938913572','2024-05-04 04:51:32','used','2024-05-04 12:51:32','2024-05-04 12:51:32'),
+	(2,'user001',100301,'测试活动',100006,'391668886086','2024-05-24 14:31:46','used','2024-05-24 22:31:47','2024-05-24 22:31:55'),
+	(3,'user001',100301,'测试活动',100006,'179191128326','2024-05-24 14:33:02','used','2024-05-24 22:33:02','2024-05-24 22:33:02'),
+	(4,'user001',100301,'测试活动',100006,'320625987421','2024-05-24 14:34:01','used','2024-05-24 22:34:01','2024-05-24 22:34:04'),
+	(5,'user001',100301,'测试活动',100006,'290879207548','2024-05-24 14:34:37','used','2024-05-24 22:34:37','2024-05-24 22:34:38');
 
 /*!40000 ALTER TABLE `user_raffle_order_000` ENABLE KEYS */;
 UNLOCK TABLES;

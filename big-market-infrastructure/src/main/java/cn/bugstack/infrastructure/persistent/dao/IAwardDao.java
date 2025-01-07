@@ -16,4 +16,8 @@ public interface IAwardDao {
     // 查询奖品列表
     List<Award> queryAwardList();
 
+    String queryAwardConfigByAwardId(Integer awardId);
+
+    String queryAwardKeyByAwardId(Integer awardId);
+
 }
