@@ -7,7 +7,7 @@
 #
 # 主机: 127.0.0.1 (MySQL 5.6.39)
 # 数据库: big_market_02
-# 生成时间: 2024-05-03 08:37:11 +0000
+# 生成时间: 2024-05-04 06:43:22 +0000
 # ************************************************************
 
 
@@ -49,7 +49,8 @@ LOCK TABLES `raffle_activity_account` WRITE;
 INSERT INTO `raffle_activity_account` (`id`, `user_id`, `activity_id`, `total_count`, `total_count_surplus`, `day_count`, `day_count_surplus`, `month_count`, `month_count_surplus`, `create_time`, `update_time`)
 VALUES
 	(2,'xiaofuge',100301,4,3,4,3,4,3,'2024-03-23 12:40:56','2024-03-23 13:16:40'),
-	(3,'xiaofuge1',100301,10,10,10,10,10,10,'2024-05-03 16:01:44','2024-05-03 16:01:44');
+	(3,'xiaofuge1',100301,10,9,10,9,10,9,'2024-05-03 16:01:44','2024-05-04 12:51:32'),
+	(4,'xiaofuge2',100301,20,5,20,5,20,5,'2024-05-04 12:52:58','2024-05-04 13:57:32');
 
 /*!40000 ALTER TABLE `raffle_activity_account` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -73,6 +74,16 @@ CREATE TABLE `raffle_activity_account_day` (
   UNIQUE KEY `uq_user_id_activity_id_day` (`user_id`,`activity_id`,`day`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='抽奖活动账户表-日次数';
 
+LOCK TABLES `raffle_activity_account_day` WRITE;
+/*!40000 ALTER TABLE `raffle_activity_account_day` DISABLE KEYS */;
+
+INSERT INTO `raffle_activity_account_day` (`id`, `user_id`, `activity_id`, `day`, `day_count`, `day_count_surplus`, `create_time`, `update_time`)
+VALUES
+	(1,'xiaofuge1',100301,'2024-05-04',10,9,'2024-05-04 12:51:32','2024-05-04 12:51:32'),
+	(2,'xiaofuge2',100301,'2024-05-04',20,5,'2024-05-04 12:53:01','2024-05-04 13:57:32');
+
+/*!40000 ALTER TABLE `raffle_activity_account_day` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # 转储表 raffle_activity_account_month
@@ -93,6 +104,16 @@ CREATE TABLE `raffle_activity_account_month` (
   UNIQUE KEY `uq_user_id_activity_id_month` (`user_id`,`activity_id`,`month`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='抽奖活动账户表-月次数';
 
+LOCK TABLES `raffle_activity_account_month` WRITE;
+/*!40000 ALTER TABLE `raffle_activity_account_month` DISABLE KEYS */;
+
+INSERT INTO `raffle_activity_account_month` (`id`, `user_id`, `activity_id`, `month`, `month_count`, `month_count_surplus`, `create_time`, `update_time`)
+VALUES
+	(1,'xiaofuge1',100301,'2024-05',10,9,'2024-05-04 12:51:32','2024-05-04 12:51:32'),
+	(2,'xiaofuge2',100301,'2024-05',20,5,'2024-05-04 12:53:01','2024-05-04 13:57:32');
+
+/*!40000 ALTER TABLE `raffle_activity_account_month` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # 转储表 raffle_activity_order_000
@@ -227,6 +248,15 @@ CREATE TABLE `raffle_activity_order_003` (
   KEY `idx_user_id_activity_id` (`user_id`,`activity_id`,`state`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='抽奖活动单';
 
+LOCK TABLES `raffle_activity_order_003` WRITE;
+/*!40000 ALTER TABLE `raffle_activity_order_003` DISABLE KEYS */;
+
+INSERT INTO `raffle_activity_order_003` (`id`, `user_id`, `sku`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `total_count`, `day_count`, `month_count`, `state`, `out_business_no`, `create_time`, `update_time`)
+VALUES
+	(2,'xiaofuge2',9011,100301,'测试活动',100006,'942458887115','2024-05-04 05:07:53',10,10,10,'completed','xiaofuge2_sku_20240504','2024-05-04 13:07:53','2024-05-04 13:07:53');
+
+/*!40000 ALTER TABLE `raffle_activity_order_003` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # 转储表 task
@@ -255,7 +285,27 @@ LOCK TABLES `task` WRITE;
 INSERT INTO `task` (`id`, `user_id`, `topic`, `message_id`, `message`, `state`, `create_time`, `update_time`)
 VALUES
 	(1,'xiaofuge1','send_rebate','54825531405','{\"data\":{\"bizId\":\"xiaofuge1_sku_20240503\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"xiaofuge1\"},\"id\":\"54825531405\",\"timestamp\":1714723302543}','completed','2024-05-03 16:01:43','2024-05-03 16:01:43'),
-	(2,'xiaofuge1','send_rebate','43189560552','{\"data\":{\"bizId\":\"xiaofuge1_integral_20240503\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"xiaofuge1\"},\"id\":\"43189560552\",\"timestamp\":1714723302551}','completed','2024-05-03 16:01:43','2024-05-03 16:01:43');
+	(2,'xiaofuge1','send_rebate','43189560552','{\"data\":{\"bizId\":\"xiaofuge1_integral_20240503\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"xiaofuge1\"},\"id\":\"43189560552\",\"timestamp\":1714723302551}','completed','2024-05-03 16:01:43','2024-05-03 16:01:43'),
+	(3,'xiaofuge1','send_award','68594836687','{\"data\":{\"awardId\":104,\"awardTitle\":\"小米台灯\",\"userId\":\"xiaofuge1\"},\"id\":\"68594836687\",\"timestamp\":1714798292665}','completed','2024-05-04 12:51:32','2024-05-04 12:51:32'),
+	(4,'xiaofuge2','send_rebate','99573670989','{\"data\":{\"bizId\":\"xiaofuge2_sku_20240504\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"xiaofuge2\"},\"id\":\"99573670989\",\"timestamp\":1714798377892}','completed','2024-05-04 12:52:57','2024-05-04 12:52:57'),
+	(5,'xiaofuge2','send_rebate','86991437226','{\"data\":{\"bizId\":\"xiaofuge2_integral_20240504\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"xiaofuge2\"},\"id\":\"86991437226\",\"timestamp\":1714798377895}','completed','2024-05-04 12:52:57','2024-05-04 12:52:57'),
+	(6,'xiaofuge2','send_award','81688408328','{\"data\":{\"awardId\":102,\"awardTitle\":\"OpenAI会员卡\",\"userId\":\"xiaofuge2\"},\"id\":\"81688408328\",\"timestamp\":1714798382103}','completed','2024-05-04 12:53:02','2024-05-04 12:53:02'),
+	(7,'xiaofuge2','send_award','42907626790','{\"data\":{\"awardId\":104,\"awardTitle\":\"小米台灯\",\"userId\":\"xiaofuge2\"},\"id\":\"42907626790\",\"timestamp\":1714798722679}','completed','2024-05-04 12:58:42','2024-05-04 12:58:42'),
+	(8,'xiaofuge2','send_award','85155176747','{\"data\":{\"awardId\":102,\"awardTitle\":\"OpenAI会员卡\",\"userId\":\"xiaofuge2\"},\"id\":\"85155176747\",\"timestamp\":1714798808373}','completed','2024-05-04 13:00:08','2024-05-04 13:00:08'),
+	(9,'xiaofuge2','send_award','76843118145','{\"data\":{\"awardId\":101,\"awardTitle\":\"随机积分\",\"userId\":\"xiaofuge2\"},\"id\":\"76843118145\",\"timestamp\":1714799138341}','completed','2024-05-04 13:05:38','2024-05-04 13:05:38'),
+	(10,'xiaofuge2','send_award','60195171213','{\"data\":{\"awardId\":101,\"awardTitle\":\"随机积分\",\"userId\":\"xiaofuge2\"},\"id\":\"60195171213\",\"timestamp\":1714799145979}','completed','2024-05-04 13:05:45','2024-05-04 13:05:45'),
+	(11,'xiaofuge2','send_award','94121994871','{\"data\":{\"awardId\":106,\"awardTitle\":\"轻奢办公椅\",\"userId\":\"xiaofuge2\"},\"id\":\"94121994871\",\"timestamp\":1714799152785}','completed','2024-05-04 13:05:52','2024-05-04 13:05:52'),
+	(12,'xiaofuge2','send_award','84058820142','{\"data\":{\"awardId\":108,\"awardTitle\":\"暴走玩偶\",\"userId\":\"xiaofuge2\"},\"id\":\"84058820142\",\"timestamp\":1714799159912}','completed','2024-05-04 13:05:59','2024-05-04 13:05:59'),
+	(13,'xiaofuge2','send_award','43171330176','{\"data\":{\"awardId\":107,\"awardTitle\":\"小霸王游戏机\",\"userId\":\"xiaofuge2\"},\"id\":\"43171330176\",\"timestamp\":1714799166780}','completed','2024-05-04 13:06:06','2024-05-04 13:06:06'),
+	(14,'xiaofuge2','send_award','84240245488','{\"data\":{\"awardId\":108,\"awardTitle\":\"暴走玩偶\",\"userId\":\"xiaofuge2\"},\"id\":\"84240245488\",\"timestamp\":1714799177736}','completed','2024-05-04 13:06:17','2024-05-04 13:06:17'),
+	(15,'xiaofuge2','send_award','95184575016','{\"data\":{\"awardId\":103,\"awardTitle\":\"支付优惠券\",\"userId\":\"xiaofuge2\"},\"id\":\"95184575016\",\"timestamp\":1714799184841}','completed','2024-05-04 13:06:24','2024-05-04 13:06:24'),
+	(16,'xiaofuge2','send_rebate','18731063175','{\"data\":{\"bizId\":\"xiaofuge2_sku_20240504\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"xiaofuge2\"},\"id\":\"18731063175\",\"timestamp\":1714799273317}','completed','2024-05-04 13:07:53','2024-05-04 13:07:53'),
+	(17,'xiaofuge2','send_rebate','55910936496','{\"data\":{\"bizId\":\"xiaofuge2_integral_20240504\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"xiaofuge2\"},\"id\":\"55910936496\",\"timestamp\":1714799273318}','completed','2024-05-04 13:07:53','2024-05-04 13:07:53'),
+	(18,'xiaofuge2','send_award','62395221004','{\"data\":{\"awardId\":103,\"awardTitle\":\"支付优惠券\",\"userId\":\"xiaofuge2\"},\"id\":\"62395221004\",\"timestamp\":1714799286429}','completed','2024-05-04 13:08:06','2024-05-04 13:08:06'),
+	(19,'xiaofuge2','send_award','82372459539','{\"data\":{\"awardId\":103,\"awardTitle\":\"支付优惠券\",\"userId\":\"xiaofuge2\"},\"id\":\"82372459539\",\"timestamp\":1714802223761}','completed','2024-05-04 13:57:03','2024-05-04 13:57:03'),
+	(20,'xiaofuge2','send_award','56572252891','{\"data\":{\"awardId\":103,\"awardTitle\":\"支付优惠券\",\"userId\":\"xiaofuge2\"},\"id\":\"56572252891\",\"timestamp\":1714802231616}','completed','2024-05-04 13:57:11','2024-05-04 13:57:11'),
+	(21,'xiaofuge2','send_award','40606839519','{\"data\":{\"awardId\":103,\"awardTitle\":\"支付优惠券\",\"userId\":\"xiaofuge2\"},\"id\":\"40606839519\",\"timestamp\":1714802240195}','completed','2024-05-04 13:57:20','2024-05-04 13:57:20'),
+	(22,'xiaofuge2','send_award','99508680162','{\"data\":{\"awardId\":102,\"awardTitle\":\"OpenAI会员卡\",\"userId\":\"xiaofuge2\"},\"id\":\"99508680162\",\"timestamp\":1714802252287}','completed','2024-05-04 13:57:32','2024-05-04 13:57:32');
 
 /*!40000 ALTER TABLE `task` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -285,6 +335,15 @@ CREATE TABLE `user_award_record_000` (
   KEY `idx_award_id` (`strategy_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户中奖记录表';
 
+LOCK TABLES `user_award_record_000` WRITE;
+/*!40000 ALTER TABLE `user_award_record_000` DISABLE KEYS */;
+
+INSERT INTO `user_award_record_000` (`id`, `user_id`, `activity_id`, `strategy_id`, `order_id`, `award_id`, `award_title`, `award_time`, `award_state`, `create_time`, `update_time`)
+VALUES
+	(1,'xiaofuge1',100301,100006,'386938913572',104,'小米台灯','2024-05-04 04:51:33','create','2024-05-04 12:51:32','2024-05-04 12:51:32');
+
+/*!40000 ALTER TABLE `user_award_record_000` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # 转储表 user_award_record_001
@@ -363,6 +422,29 @@ CREATE TABLE `user_award_record_003` (
   KEY `idx_award_id` (`strategy_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户中奖记录表';
 
+LOCK TABLES `user_award_record_003` WRITE;
+/*!40000 ALTER TABLE `user_award_record_003` DISABLE KEYS */;
+
+INSERT INTO `user_award_record_003` (`id`, `user_id`, `activity_id`, `strategy_id`, `order_id`, `award_id`, `award_title`, `award_time`, `award_state`, `create_time`, `update_time`)
+VALUES
+	(1,'xiaofuge2',100301,100006,'809920093949',102,'OpenAI会员卡','2024-05-04 04:53:02','create','2024-05-04 12:53:02','2024-05-04 12:53:02'),
+	(2,'xiaofuge2',100301,100006,'613575974630',104,'小米台灯','2024-05-04 04:58:43','create','2024-05-04 12:58:42','2024-05-04 12:58:42'),
+	(3,'xiaofuge2',100301,100006,'632802870481',102,'OpenAI会员卡','2024-05-04 05:00:08','create','2024-05-04 13:00:08','2024-05-04 13:00:08'),
+	(4,'xiaofuge2',100301,100006,'972433161890',101,'随机积分','2024-05-04 05:05:38','create','2024-05-04 13:05:38','2024-05-04 13:05:38'),
+	(5,'xiaofuge2',100301,100006,'877507315775',101,'随机积分','2024-05-04 05:05:46','create','2024-05-04 13:05:45','2024-05-04 13:05:45'),
+	(6,'xiaofuge2',100301,100006,'517301751417',106,'轻奢办公椅','2024-05-04 05:05:53','create','2024-05-04 13:05:52','2024-05-04 13:05:52'),
+	(7,'xiaofuge2',100301,100006,'261932434171',108,'暴走玩偶','2024-05-04 05:06:00','create','2024-05-04 13:05:59','2024-05-04 13:05:59'),
+	(8,'xiaofuge2',100301,100006,'700573379547',107,'小霸王游戏机','2024-05-04 05:06:07','create','2024-05-04 13:06:06','2024-05-04 13:06:06'),
+	(9,'xiaofuge2',100301,100006,'105697168349',108,'暴走玩偶','2024-05-04 05:06:18','create','2024-05-04 13:06:17','2024-05-04 13:06:17'),
+	(10,'xiaofuge2',100301,100006,'959233180689',103,'支付优惠券','2024-05-04 05:06:25','create','2024-05-04 13:06:24','2024-05-04 13:06:24'),
+	(11,'xiaofuge2',100301,100006,'958431976534',103,'支付优惠券','2024-05-04 05:08:06','create','2024-05-04 13:08:06','2024-05-04 13:08:06'),
+	(12,'xiaofuge2',100301,100006,'014341440837',103,'支付优惠券','2024-05-04 05:57:04','create','2024-05-04 13:57:03','2024-05-04 13:57:03'),
+	(13,'xiaofuge2',100301,100006,'104619821752',103,'支付优惠券','2024-05-04 05:57:12','create','2024-05-04 13:57:11','2024-05-04 13:57:11'),
+	(14,'xiaofuge2',100301,100006,'932807566378',103,'支付优惠券','2024-05-04 05:57:20','create','2024-05-04 13:57:20','2024-05-04 13:57:20'),
+	(15,'xiaofuge2',100301,100006,'623497872684',102,'OpenAI会员卡','2024-05-04 05:57:32','create','2024-05-04 13:57:32','2024-05-04 13:57:32');
+
+/*!40000 ALTER TABLE `user_award_record_003` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # 转储表 user_behavior_rebate_order_000
@@ -473,6 +555,16 @@ CREATE TABLE `user_behavior_rebate_order_003` (
   KEY `idx_user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户行为返利流水订单表';
 
+LOCK TABLES `user_behavior_rebate_order_003` WRITE;
+/*!40000 ALTER TABLE `user_behavior_rebate_order_003` DISABLE KEYS */;
+
+INSERT INTO `user_behavior_rebate_order_003` (`id`, `user_id`, `order_id`, `behavior_type`, `rebate_desc`, `rebate_type`, `rebate_config`, `out_business_no`, `biz_id`, `create_time`, `update_time`)
+VALUES
+	(7,'xiaofuge2','298513989210','sign','签到返利-sku额度','sku','9011','20240504','xiaofuge2_sku_20240504','2024-05-04 13:07:53','2024-05-04 13:07:53'),
+	(8,'xiaofuge2','352651244433','sign','签到返利-积分','integral','10','20240504','xiaofuge2_integral_20240504','2024-05-04 13:07:53','2024-05-04 13:07:53');
+
+/*!40000 ALTER TABLE `user_behavior_rebate_order_003` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # 转储表 user_raffle_order_000
@@ -496,6 +588,15 @@ CREATE TABLE `user_raffle_order_000` (
   KEY `idx_user_id_activity_id` (`user_id`,`activity_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户抽奖订单表';
 
+LOCK TABLES `user_raffle_order_000` WRITE;
+/*!40000 ALTER TABLE `user_raffle_order_000` DISABLE KEYS */;
+
+INSERT INTO `user_raffle_order_000` (`id`, `user_id`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `order_state`, `create_time`, `update_time`)
+VALUES
+	(1,'xiaofuge1',100301,'测试活动',100006,'386938913572','2024-05-04 04:51:32','used','2024-05-04 12:51:32','2024-05-04 12:51:32');
+
+/*!40000 ALTER TABLE `user_raffle_order_000` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # 转储表 user_raffle_order_001
@@ -565,6 +666,29 @@ CREATE TABLE `user_raffle_order_003` (
   KEY `idx_user_id_activity_id` (`user_id`,`activity_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户抽奖订单表';
 
+LOCK TABLES `user_raffle_order_003` WRITE;
+/*!40000 ALTER TABLE `user_raffle_order_003` DISABLE KEYS */;
+
+INSERT INTO `user_raffle_order_003` (`id`, `user_id`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `order_state`, `create_time`, `update_time`)
+VALUES
+	(1,'xiaofuge2',100301,'测试活动',100006,'809920093949','2024-05-04 04:53:02','used','2024-05-04 12:53:02','2024-05-04 12:53:02'),
+	(2,'xiaofuge2',100301,'测试活动',100006,'613575974630','2024-05-04 04:58:43','used','2024-05-04 12:58:42','2024-05-04 12:58:42'),
+	(3,'xiaofuge2',100301,'测试活动',100006,'632802870481','2024-05-04 05:00:08','used','2024-05-04 13:00:08','2024-05-04 13:00:08'),
+	(4,'xiaofuge2',100301,'测试活动',100006,'972433161890','2024-05-04 05:04:33','used','2024-05-04 13:04:32','2024-05-04 13:05:38'),
+	(5,'xiaofuge2',100301,'测试活动',100006,'877507315775','2024-05-04 05:05:46','used','2024-05-04 13:05:45','2024-05-04 13:05:45'),
+	(6,'xiaofuge2',100301,'测试活动',100006,'517301751417','2024-05-04 05:05:53','used','2024-05-04 13:05:52','2024-05-04 13:05:52'),
+	(7,'xiaofuge2',100301,'测试活动',100006,'261932434171','2024-05-04 05:06:00','used','2024-05-04 13:05:59','2024-05-04 13:05:59'),
+	(8,'xiaofuge2',100301,'测试活动',100006,'700573379547','2024-05-04 05:06:07','used','2024-05-04 13:06:06','2024-05-04 13:06:06'),
+	(9,'xiaofuge2',100301,'测试活动',100006,'105697168349','2024-05-04 05:06:18','used','2024-05-04 13:06:17','2024-05-04 13:06:17'),
+	(10,'xiaofuge2',100301,'测试活动',100006,'959233180689','2024-05-04 05:06:25','used','2024-05-04 13:06:24','2024-05-04 13:06:24'),
+	(11,'xiaofuge2',100301,'测试活动',100006,'958431976534','2024-05-04 05:08:06','used','2024-05-04 13:08:06','2024-05-04 13:08:06'),
+	(12,'xiaofuge2',100301,'测试活动',100006,'014341440837','2024-05-04 05:57:04','used','2024-05-04 13:57:03','2024-05-04 13:57:03'),
+	(13,'xiaofuge2',100301,'测试活动',100006,'104619821752','2024-05-04 05:57:12','used','2024-05-04 13:57:11','2024-05-04 13:57:11'),
+	(14,'xiaofuge2',100301,'测试活动',100006,'932807566378','2024-05-04 05:57:20','used','2024-05-04 13:57:20','2024-05-04 13:57:20'),
+	(15,'xiaofuge2',100301,'测试活动',100006,'623497872684','2024-05-04 05:57:32','used','2024-05-04 13:57:32','2024-05-04 13:57:32');
+
+/*!40000 ALTER TABLE `user_raffle_order_003` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
