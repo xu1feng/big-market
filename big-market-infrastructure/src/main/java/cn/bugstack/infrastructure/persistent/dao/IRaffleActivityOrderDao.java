@@ -16,9 +16,15 @@ import java.util.List;
 @DBRouterStrategy(splitTable = true)
 public interface IRaffleActivityOrderDao {
 
+    @DBRouter(key = "userId")
     void insert(RaffleActivityOrder raffleActivityOrder);
 
     @DBRouter
     List<RaffleActivityOrder> queryRaffleActivityOrderByUserId(String userId);
+
+    @DBRouter
+    RaffleActivityOrder queryRaffleActivityOrder(RaffleActivityOrder raffleActivityOrderReq);
+
+    int updateOrderCompleted(RaffleActivityOrder raffleActivityOrderReq);
 
 }

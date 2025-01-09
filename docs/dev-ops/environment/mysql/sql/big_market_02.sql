@@ -7,7 +7,7 @@
 #
 # 主机: 127.0.0.1 (MySQL 5.6.39)
 # 数据库: big_market_02
-# 生成时间: 2024-06-01 03:05:19 +0000
+# 生成时间: 2024-06-09 02:47:32 +0000
 # ************************************************************
 
 
@@ -139,6 +139,7 @@ CREATE TABLE `raffle_activity_order_000` (
   `total_count` int(8) NOT NULL COMMENT '总次数',
   `day_count` int(8) NOT NULL COMMENT '日次数',
   `month_count` int(8) NOT NULL COMMENT '月次数',
+  `pay_amount` decimal(10,2) DEFAULT NULL COMMENT '支付金额【积分】',
   `state` varchar(16) NOT NULL DEFAULT 'complete' COMMENT '订单状态（complete）',
   `out_business_no` varchar(64) NOT NULL COMMENT '业务仿重ID - 外部透传的，确保幂等',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -152,10 +153,10 @@ CREATE TABLE `raffle_activity_order_000` (
 LOCK TABLES `raffle_activity_order_000` WRITE;
 /*!40000 ALTER TABLE `raffle_activity_order_000` DISABLE KEYS */;
 
-INSERT INTO `raffle_activity_order_000` (`id`, `user_id`, `sku`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `total_count`, `day_count`, `month_count`, `state`, `out_business_no`, `create_time`, `update_time`)
+INSERT INTO `raffle_activity_order_000` (`id`, `user_id`, `sku`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `total_count`, `day_count`, `month_count`, `pay_amount`, `state`, `out_business_no`, `create_time`, `update_time`)
 VALUES
-	(1,'xiaofuge1',9011,100301,'测试活动',100006,'831917125310','2024-05-03 08:01:44',10,10,10,'completed','xiaofuge1_sku_20240503','2024-05-03 16:01:44','2024-05-03 16:01:44'),
-	(2,'user001',9011,100301,'测试活动',100006,'923549663927','2024-05-24 14:30:55',100,100,100,'completed','user001_sku_20240524','2024-05-24 22:30:54','2024-05-24 22:30:54');
+	(1,'xiaofuge1',9011,100301,'测试活动',100006,'831917125310','2024-05-03 08:01:44',10,10,10,NULL,'completed','xiaofuge1_sku_20240503','2024-05-03 16:01:44','2024-05-03 16:01:44'),
+	(2,'user001',9011,100301,'测试活动',100006,'923549663927','2024-05-24 14:30:55',100,100,100,NULL,'completed','user001_sku_20240524','2024-05-24 22:30:54','2024-05-24 22:30:54');
 
 /*!40000 ALTER TABLE `raffle_activity_order_000` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -178,6 +179,7 @@ CREATE TABLE `raffle_activity_order_001` (
   `total_count` int(8) NOT NULL COMMENT '总次数',
   `day_count` int(8) NOT NULL COMMENT '日次数',
   `month_count` int(8) NOT NULL COMMENT '月次数',
+  `pay_amount` decimal(10,2) DEFAULT NULL COMMENT '支付金额【积分】',
   `state` varchar(16) NOT NULL DEFAULT 'complete' COMMENT '订单状态（complete）',
   `out_business_no` varchar(64) NOT NULL COMMENT '业务仿重ID - 外部透传的，确保幂等',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -191,11 +193,11 @@ CREATE TABLE `raffle_activity_order_001` (
 LOCK TABLES `raffle_activity_order_001` WRITE;
 /*!40000 ALTER TABLE `raffle_activity_order_001` DISABLE KEYS */;
 
-INSERT INTO `raffle_activity_order_001` (`id`, `user_id`, `sku`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `total_count`, `day_count`, `month_count`, `state`, `out_business_no`, `create_time`, `update_time`)
+INSERT INTO `raffle_activity_order_001` (`id`, `user_id`, `sku`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `total_count`, `day_count`, `month_count`, `pay_amount`, `state`, `out_business_no`, `create_time`, `update_time`)
 VALUES
-	(3,'xiaofuge',9011,100301,'测试活动',100006,'383240888158','2024-03-23 04:38:23',1,1,1,'completed','700091009111','2024-03-23 12:38:23','2024-03-23 12:38:23'),
-	(4,'user002',9011,100301,'测试活动',100006,'165083654323','2024-05-24 14:30:55',100,100,100,'completed','user002_sku_20240524','2024-05-24 22:30:54','2024-05-24 22:30:54'),
-	(261,'user002',9011,100301,'测试活动',100006,'762873325216','2024-05-27 14:42:18',100,100,100,'completed','user002_sku_20240527','2024-05-27 22:42:17','2024-05-27 22:42:17');
+	(3,'xiaofuge',9011,100301,'测试活动',100006,'383240888158','2024-03-23 04:38:23',1,1,1,NULL,'completed','700091009111','2024-03-23 12:38:23','2024-03-23 12:38:23'),
+	(4,'user002',9011,100301,'测试活动',100006,'165083654323','2024-05-24 14:30:55',100,100,100,NULL,'completed','user002_sku_20240524','2024-05-24 22:30:54','2024-05-24 22:30:54'),
+	(261,'user002',9011,100301,'测试活动',100006,'762873325216','2024-05-27 14:42:18',100,100,100,NULL,'completed','user002_sku_20240527','2024-05-27 22:42:17','2024-05-27 22:42:17');
 
 /*!40000 ALTER TABLE `raffle_activity_order_001` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -218,6 +220,7 @@ CREATE TABLE `raffle_activity_order_002` (
   `total_count` int(8) NOT NULL COMMENT '总次数',
   `day_count` int(8) NOT NULL COMMENT '日次数',
   `month_count` int(8) NOT NULL COMMENT '月次数',
+  `pay_amount` decimal(10,2) DEFAULT NULL COMMENT '支付金额【积分】',
   `state` varchar(16) NOT NULL DEFAULT 'complete' COMMENT '订单状态（complete）',
   `out_business_no` varchar(64) NOT NULL COMMENT '业务仿重ID - 外部透传的，确保幂等',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -247,6 +250,7 @@ CREATE TABLE `raffle_activity_order_003` (
   `total_count` int(8) NOT NULL COMMENT '总次数',
   `day_count` int(8) NOT NULL COMMENT '日次数',
   `month_count` int(8) NOT NULL COMMENT '月次数',
+  `pay_amount` decimal(10,2) DEFAULT NULL COMMENT '支付金额【积分】',
   `state` varchar(16) NOT NULL DEFAULT 'complete' COMMENT '订单状态（complete）',
   `out_business_no` varchar(64) NOT NULL COMMENT '业务仿重ID - 外部透传的，确保幂等',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -260,9 +264,9 @@ CREATE TABLE `raffle_activity_order_003` (
 LOCK TABLES `raffle_activity_order_003` WRITE;
 /*!40000 ALTER TABLE `raffle_activity_order_003` DISABLE KEYS */;
 
-INSERT INTO `raffle_activity_order_003` (`id`, `user_id`, `sku`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `total_count`, `day_count`, `month_count`, `state`, `out_business_no`, `create_time`, `update_time`)
+INSERT INTO `raffle_activity_order_003` (`id`, `user_id`, `sku`, `activity_id`, `activity_name`, `strategy_id`, `order_id`, `order_time`, `total_count`, `day_count`, `month_count`, `pay_amount`, `state`, `out_business_no`, `create_time`, `update_time`)
 VALUES
-	(2,'xiaofuge2',9011,100301,'测试活动',100006,'942458887115','2024-05-04 05:07:53',10,10,10,'completed','xiaofuge2_sku_20240504','2024-05-04 13:07:53','2024-05-04 13:07:53');
+	(2,'xiaofuge2',9011,100301,'测试活动',100006,'942458887115','2024-05-04 05:07:53',10,10,10,NULL,'completed','xiaofuge2_sku_20240504','2024-05-04 13:07:53','2024-05-04 13:07:53');
 
 /*!40000 ALTER TABLE `raffle_activity_order_003` ENABLE KEYS */;
 UNLOCK TABLES;
