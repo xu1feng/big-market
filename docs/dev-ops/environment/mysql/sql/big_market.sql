@@ -7,7 +7,7 @@
 #
 # 主机: 127.0.0.1 (MySQL 5.6.39)
 # 数据库: big_market
-# 生成时间: 2024-05-25 02:56:19 +0000
+# 生成时间: 2024-06-01 03:05:01 +0000
 # ************************************************************
 
 
@@ -82,7 +82,7 @@ LOCK TABLES `daily_behavior_rebate` WRITE;
 
 INSERT INTO `daily_behavior_rebate` (`id`, `behavior_type`, `rebate_desc`, `rebate_type`, `rebate_config`, `state`, `create_time`, `update_time`)
 VALUES
-	(1,'sign','签到返利-sku额度','sku','9011','open','2024-04-30 09:32:46','2024-04-30 18:05:23'),
+	(1,'sign','签到返利-sku额度','sku','9011','open','2024-04-30 09:32:46','2024-06-01 11:04:55'),
 	(2,'sign','签到返利-积分','integral','10','open','2024-04-30 09:32:46','2024-04-30 18:05:27');
 
 /*!40000 ALTER TABLE `daily_behavior_rebate` ENABLE KEYS */;
@@ -175,7 +175,7 @@ LOCK TABLES `raffle_activity_sku` WRITE;
 
 INSERT INTO `raffle_activity_sku` (`id`, `sku`, `activity_id`, `activity_count_id`, `stock_count`, `stock_count_surplus`, `create_time`, `update_time`)
 VALUES
-	(1,9011,100301,11101,100000,99909,'2024-03-16 11:41:09','2024-05-25 10:53:20');
+	(1,9011,100301,11101,100000,99893,'2024-03-16 11:41:09','2024-05-30 07:22:10');
 
 /*!40000 ALTER TABLE `raffle_activity_sku` ENABLE KEYS */;
 UNLOCK TABLES;
