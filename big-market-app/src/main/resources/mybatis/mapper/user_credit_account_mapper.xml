@@ -32,4 +32,10 @@
         where user_id = #{userId}
     </select>
 
+    <update id="updateSubtractionAmount" parameterType="cn.bugstack.infrastructure.persistent.po.UserCreditAccount">
+        update user_credit_account set
+        available_amount = available_amount + #{availableAmount}
+        where user_id = #{userId} and available_amount > 0
+    </update>
+
 </mapper>
