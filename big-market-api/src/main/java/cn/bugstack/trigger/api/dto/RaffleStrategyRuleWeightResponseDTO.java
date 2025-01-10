@@ -2,6 +2,7 @@ package cn.bugstack.trigger.api.dto;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * @description: 抽奖策略规则，权重配置，查询N次抽奖可解锁奖品范围，应答对象
  */
 @Data
-public class RaffleStrategyRuleWeightResponseDTO {
+public class RaffleStrategyRuleWeightResponseDTO implements Serializable {
 
     // 权重规则配置的抽奖次数
     private Integer ruleWeightCount;
