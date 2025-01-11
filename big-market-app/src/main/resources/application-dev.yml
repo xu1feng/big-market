@@ -131,6 +131,15 @@ dubbo:
   scan:
     base-packages: cn.bugstack.trigger.api
 
+zookeeper:
+  sdk:
+    config:
+      connect-string: 127.0.0.1:2181
+      base-sleep-time-ms: 1000
+      max-retries: 3
+      session-timeout-ms: 18000
+      connection-timeout-ms: 30000
+
 # 日志
 logging:
   level:
