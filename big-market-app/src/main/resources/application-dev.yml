@@ -29,6 +29,9 @@ spring:
       send_award: send_award
       send_rebate: send_rebate
       credit_adjust_success: credit_adjust_success
+  elasticsearch.datasource:
+    driverClassName: org.elasticsearch.xpack.sql.jdbc.EsDriver
+    url: jdbc:es://http://127.0.0.1:9200
 
 # 线程池配置
 thread:
@@ -98,9 +101,8 @@ mini-db-router:
           connection-timeout: 30000 #数据库连接超时时间,默认30秒，即30000
           connection-test-query: SELECT 1
 
-# MyBatis 配置【如需使用记得打开】
 mybatis:
-  mapper-locations: classpath:/mybatis/mapper/*.xml
+  mapper-locations: classpath:/mybatis/mapper/mysql/*.xml
   config-location:  classpath:/mybatis/config/mybatis-config.xml
 
 # Redis

@@ -28,7 +28,7 @@ import cn.bugstack.types.annotations.DCCValue;
 import cn.bugstack.types.annotations.RateLimiterAccessInterceptor;
 import cn.bugstack.types.enums.ResponseCode;
 import cn.bugstack.types.exception.AppException;
-import cn.bugstack.types.model.Response;
+import cn.bugstack.trigger.api.response.Response;
 import com.alibaba.fastjson.JSON;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;

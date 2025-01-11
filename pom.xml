@@ -16,20 +16,6 @@
         <module>big-market-api</module>
     </modules>
 
-    <repositories>
-        <repository>
-            <id>nexus-aliyun</id>
-            <name>nexus-aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,10 +26,10 @@
 
     <developers>
         <developer>
-            <name>xu1feng</name>
-            <email>2465549609@qq.com</email>
-            <organization>xuyifeng</organization>
-            <organizationUrl>https://github.com/xu1feng</organizationUrl>
+            <name>xiaofuge</name>
+            <email>184172133@qq.com</email>
+            <organization>fuzhengwei</organization>
+            <organizationUrl>https://github.com/fuzhengwei</organizationUrl>
         </developer>
     </developers>
 
@@ -118,18 +104,18 @@
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
-                <version>3.23.4</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/cn.bugstack.middleware/db-router-spring-boot-starter -->
-            <dependency>
-                <groupId>cn.bugstack.middleware</groupId>
-                <artifactId>db-router-spring-boot-starter</artifactId>
-                <version>1.0.2</version>
+                <version>3.26.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jeasy</groupId>
                 <artifactId>easy-random-core</artifactId>
                 <version>4.3.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/plus.gaga.middleware/db-router-spring-boot-starter -->
+            <dependency>
+                <groupId>plus.gaga.middleware</groupId>
+                <artifactId>db-router-spring-boot-starter</artifactId>
+                <version>1.0.4</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-amqp -->
             <dependency>
@@ -137,7 +123,6 @@
                 <artifactId>spring-boot-starter-amqp</artifactId>
                 <version>3.2.0</version>
             </dependency>
-            <!-- Dubbo + Nacos -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
@@ -162,6 +147,12 @@
                 <groupId>com.netflix.hystrix</groupId>
                 <artifactId>hystrix-javanica</artifactId>
                 <version>1.5.18</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.elasticsearch.plugin/x-pack-sql-jdbc -->
+            <dependency>
+                <groupId>org.elasticsearch.plugin</groupId>
+                <artifactId>x-pack-sql-jdbc</artifactId>
+                <version>7.17.14</version>
             </dependency>
 
             <!-- 工程模块 -->

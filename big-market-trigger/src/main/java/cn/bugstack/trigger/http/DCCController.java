@@ -2,7 +2,7 @@ package cn.bugstack.trigger.http;
 
 import cn.bugstack.trigger.api.IDCCService;
 import cn.bugstack.types.enums.ResponseCode;
-import cn.bugstack.types.model.Response;
+import cn.bugstack.trigger.api.response.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.zookeeper.data.Stat;

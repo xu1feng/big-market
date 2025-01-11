@@ -1,6 +1,6 @@
 package cn.bugstack.test;
 
-import cn.bugstack.infrastructure.persistent.redis.IRedisService;
+import cn.bugstack.infrastructure.redis.IRedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
