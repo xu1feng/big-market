@@ -32,6 +32,9 @@ spring:
   elasticsearch.datasource:
     driverClassName: org.elasticsearch.xpack.sql.jdbc.EsDriver
     url: jdbc:es://http://127.0.0.1:9200
+  cloud:
+    zookeeper:
+      enabled: false
 
 # 线程池配置
 thread:
@@ -126,7 +129,8 @@ dubbo:
     version: 1.0
   registry:
     id: nacos-registry
-    address: nacos://127.0.0.1:8848
+    address: N/A
+  #    address: nacos://127.0.0.1:8848
   protocol:
     name: dubbo
     port: -1
@@ -136,11 +140,35 @@ dubbo:
 zookeeper:
   sdk:
     config:
-      connect-string: 127.0.0.1:2181
+      # 状态；true = 开启、false 关闭
+      enable: false
+      connect-string: 192.168.1.108:2181
       base-sleep-time-ms: 1000
       max-retries: 3
       session-timeout-ms: 18000
       connection-timeout-ms: 30000
+
+# xxl-job https://www.xuxueli.com/xxl-job/#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E8%B0%83%E5%BA%A6%E4%B8%AD%E5%BF%83%E9%85%8D%E7%BD%AE%EF%BC%9A
+xxl:
+  job:
+    # 验证信息 官网Bug https://github.com/xuxueli/xxl-job/issues/1951
+    accessToken: default_token
+    # 注册地址
+    admin:
+      addresses: http://127.0.0.1:9090/xxl-job-admin
+    # 注册执行器
+    executor:
+      #  执行器注册 [选填]：优先使用该配置作为注册地址，为空时使用内嵌服务 ”IP:PORT“ 作为注册地址。从而更灵活的支持容器类型执行器动态IP和动态映射端口问题。
+      address:
+      appname: big-market-job
+      # 执行器IP 配置为本机IP [选填]：默认为空表示自动获取IP，多网卡时可手动设置指定IP，该IP不会绑定Host仅作为通讯实用；地址信息用于 "执行器注册" 和 "调度中心请求并触发任务"；
+      ip:
+      # 执行器端口号 [选填]：小于等于0则自动获取；默认端口为9999，单机部署多个执行器时，注意要配置不同执行器端口；
+      port: 9999
+      # 执行器运行日志文件存储磁盘路径 [选填] ：需要对该路径拥有读写权限；为空则使用默认路径；
+      logpath: ./data/applogs/xxl-job/jobhandler
+      # 执行器日志文件保存天数 [选填] ： 过期日志自动清理, 限制值大于等于3时生效; 否则, 如-1, 关闭自动清理功能；
+      logretentiondays: 30
 
 # 日志
 logging:
