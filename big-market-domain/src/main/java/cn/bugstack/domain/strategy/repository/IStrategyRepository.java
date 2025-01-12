@@ -22,7 +22,9 @@ public interface IStrategyRepository {
 
     List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId);
 
-    void storeStrategyAwardSearchRateTable(String key, Integer rateRange, Map<Integer, Integer> strategyAwardSearchRateTable);
+    <K, V> void storeStrategyAwardSearchRateTable(String key, Integer rateRange, Map<K, V> strategyAwardSearchRateTable);
+
+    <K, V> Map<K, V> getMap(String key);
 
     Integer getStrategyAwardAssemble(String key, Integer rateKey);
 
@@ -67,7 +69,7 @@ public interface IStrategyRepository {
     /**
      * 缓存key，decr 方式扣减库存
      *
-     * @param cacheKey 缓存Key
+     * @param cacheKey    缓存Key
      * @param endDateTime 活动结束时间
      * @return 扣减结果
      */
@@ -84,6 +86,11 @@ public interface IStrategyRepository {
      * 获取奖品库存消费队列
      */
     StrategyAwardStockKeyVO takeQueueValue() throws InterruptedException;
+
+    /**
+     * 获取奖品库存消费队列
+     */
+    StrategyAwardStockKeyVO takeQueueValue(Long strategyId, Integer awardId) throws InterruptedException;
 
     /**
      * 更新奖品库存消耗
@@ -143,5 +150,28 @@ public interface IStrategyRepository {
      * @return 权重规则
      */
     List<RuleWeightVO> queryAwardRuleWeight(Long strategyId);
+
+    /**
+     * 查询有效活动的奖品配置
+     *
+     * @return 奖品配置列表
+     */
+    List<StrategyAwardStockKeyVO> queryOpenActivityStrategyAwardList();
+
+    /**
+     * 存储抽奖策略对应的Bean算法
+     *
+     * @param key      策略ID
+     * @param beanName 策略对象名称
+     */
+    void cacheStrategyArmoryAlgorithm(String key, String beanName);
+
+    /**
+     * 获取存储抽奖策略对应的Bean算法
+     *
+     * @param key 策略ID
+     * @return 策略对象名称
+     */
+    String queryStrategyArmoryAlgorithmFromCache(String key);
 
 }
