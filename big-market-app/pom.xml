@@ -118,10 +118,11 @@
         </dependency>
 
         <dependency>
-            <groupId>plus.gaga</groupId>
+            <groupId>edu.xyf</groupId>
             <artifactId>business-behavior-monitor-sdk</artifactId>
-            <version>1.1</version>
+            <version>1.0</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.xuxueli/xxl-job-core -->
         <dependency>
             <groupId>com.xuxueli</groupId>
